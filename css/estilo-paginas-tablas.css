@@ -1,0 +1,21 @@
+.modificar{
+    
+}
+
+.btn-edit{
+    display: flex;
+    justify-content: end;
+}
+
+.btn-mdt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 767px){
+    
+    .gpo-btn-edit{
+        display: inline-block;
+    }
+}

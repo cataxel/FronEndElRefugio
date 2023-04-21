@@ -1,0 +1,245 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+#wrapper{
+    display: block;
+}
+
+#content{
+    display: flex;
+}
+
+.container-fluid{
+    margin-top: 20px;
+}
+
+.barra-1{
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+#ul-buscar{
+    display: flex;
+    align-content: flex-end;
+    width: auto;
+}
+
+#barra-buscar{
+    display: flex;
+    align-items: flex-end;
+    align-content: flex-end;
+    width: 50%;
+}
+
+#logo-nav{
+    height: 60px;
+    width: 60px;
+}
+
+#logo-nav img{
+    width: 100%;
+    height: 100%;
+}
+
+.boton-toggler{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5px;
+}
+
+#boton-menu-contorno{
+    height: 54px;
+    width: 65px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+#boton-menu-contorno button{
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+
+#nombre-pagina{ 
+    color: black;
+    text-decoration: solid;
+    font-weight: 400;
+    font-size: 30px;
+    margin-left: 40px;
+}
+
+#nombre-prin p{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    margin-bottom: 0;
+}
+
+#barra-buscar{
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+#ul-buscar{
+    display: flex;
+    justify-content: flex-end;
+    width: 450px;
+}
+
+#menu-opcion{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    height: 55px;
+}
+
+#menu-op{
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+}
+
+#opcion-menu{
+    margin: auto 10px;
+}
+
+#logo-menu{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    height: 40px;
+    width: 45px;
+}
+
+#logo-menu img{
+    width: 100%;
+    height: 100%;
+}
+
+.btn-padding{
+    padding: 0;
+}
+
+.sidebar.toggled{
+    display: flex;
+    align-items: center;
+}
+
+.sidebar.toggled li{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+}
+
+.sidebar.toggled div{
+    font-size: 0.65rem;
+    display: flex;
+    justify-content: center;
+    margin-right: 0;
+}
+
+.sidebar.toggled .nav-item .nav-link .opcion-mnu{
+    font-size: 0.65rem;
+    display: none;
+    width: 0;
+}
+
+.sidebar.toggled .nav-item .enlace {
+    font-size: 0.65rem;
+    display: flex;
+    justify-content: center !important;
+}
+
+.filas-form{
+    margin-bottom: 40px;
+}
+
+/*TOGGLES */
+
+.toggleActivo{
+    margin-left: 50px;
+}
+
+.togglePG{
+    margin-left: 10px;
+}
+
+.togglerec{
+    margin-left: 200px;
+}
+
+/*TOGGLES */
+
+
+@media (max-width: 868px){
+    #ul-buscar{
+        width: 400px;
+    }
+    #nombre-pagina{
+        margin-left: 15px;
+    }
+}
+
+@media (max-width: 780px){
+    #ul-buscar{
+        width: 350px;
+    }
+}
+
+@media (max-width: 768px){
+    .sidebar .nav-item .nav-link span {
+        display: none;
+    }
+    .sidebar .nav-item .nav-link img {
+        display: block;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sidebar div{
+        font-size: 0.65rem;
+        display: flex;
+        justify-content: center;
+        margin-right: 0;
+    }
+    
+    .sidebar .nav-item .nav-link .opcion-mnu{
+        font-size: 0.65rem;
+        display: none;
+        width: 0;
+    }
+    
+    .sidebar .nav-item .enlace {
+        font-size: 0.65rem;
+        display: flex;
+        justify-content: center !important;
+    }
+
+    .sidebar{
+        display: flex;
+        align-items: center;
+    }
+    
+    .sidebar li{
+        display: flex;
+        justify-content: center;
+        width: 80%;
+    }
+
+}
+
+@media (max-width: 575px){
+    
+    #barra-buscar{
+        display: none;
+    }
+}
