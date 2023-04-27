@@ -45,6 +45,22 @@
     height: 100%;
 }
 
+.sidebar .nav-item .nav-link {
+    font-weight: 700;
+}
+
+.sidebar .nav-item .nav-link span {
+    font-size: 1rem;
+}
+
+.nav-item.active{
+    background-color: black !important;
+}
+
+.sidebar .nav-item.active .nav-link span {
+    color: white !important;
+}
+
 .boton-toggler{
     display: flex;
     justify-content: flex-end;
@@ -66,7 +82,6 @@
     align-items: center;
     align-content: center;
 }
-
 
 #nombre-pagina{ 
     color: black;
