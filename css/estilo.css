@@ -195,6 +195,19 @@
 
 /*TOGGLES */
 
+.campos-cuadro{
+    width: 35%;
+}
+
+.filas{
+    display: flex;
+    justify-content: center;
+}
+
+.ingreso{
+    width: 10%;
+}
+
 
 @media (max-width: 868px){
     #ul-buscar{
@@ -260,10 +273,9 @@
     }
 }
 .cdTexto{
-    border: none;
     padding:none;
 }
 .textoIndicativo{
     font-size: 20px;
-    
+
 }
