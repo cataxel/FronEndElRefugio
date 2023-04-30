@@ -260,4 +260,9 @@
 }
 .cdTexto{
     border: none;
+    padding:none;
+}
+.textoIndicativo{
+    font-size: 20px;
+    
 }
