@@ -1,0 +1,8 @@
+.izquierda{
+    border: 2px solid #00A0F0;
+    flex-direction: row;
+    margin: 70px;
+}
+.imagen{
+    margin:70px;
+}
