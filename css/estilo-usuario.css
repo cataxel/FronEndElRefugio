@@ -1,8 +1,60 @@
 .izquierda{
     border: 2px solid #00A0F0;
-    flex-direction: row;
-    margin: 70px;
+    margin:70px;
+    flex-direction: column;
+    
 }
 .imagen{
+    margin-top: 30%;
+    margin-left: 30%;
+    margin-right: 30%;
+    width:40%;
+    margin: 2px solid #000000;
+
+}
+.nombre{
+    font-size: 30px;
+    color:#000000;
+    margin-top:40px;
+    
+}
+.linea{
+    border: 2px solid #00A0F0;
+}
+.indicadorContenedor{
+    display:flex;
+}
+.indicador{
+    color:#000000;
+    font-weight: lighter;
+    margin:15%;
+    font-size: 30px;
+}
+.contadorContenedor{
+    display:flex;
+}
+.contador{
+    color:#000000;
+    font-weight: lighter;
+  padding:18%;
+    font-size: 30px;
+}
+.derecha{
+
     margin:70px;
+}
+.cdTexto{
+    padding:none;
+}
+.textoIndicativo{
+    font-size: 20px;
+    margin-left:5px;
+}
+.boton{
+    background-color: #00A0F0;
+    color: #FFFFFF;
+    padding:10px;
+    width:40%;
+    font-size: 20px;
+    margin:10px;
 }
