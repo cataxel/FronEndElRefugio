@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "6b34d6d9-ce39-47b2-aa2e-6f2b62a71660",
+		"name": "Lotes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25341885"
+	},
+	"item": [
+		{
+			"name": "crear un  nuevo lote",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Existencias\":\"5\",\n    \"FechaCaducidad\":\"2023-04-20\",\n    \"Estatus\":true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/lotes/nuevo/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lotes",
+						"nuevo",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar lotes",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Existencias\":\"1\",\n    \"FechaCaducidad\":\"2023-04-19\",\n    \"Estatus\":true\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/lotes/actualizar/6441d4fdadb4f2f89002d719",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lotes",
+						"actualizar",
+						"6441d4fdadb4f2f89002d719"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "desactivar lotes",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Estatus\":false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/lotes/desactivar/6441d4fdadb4f2f89002d719",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lotes",
+						"desactivar",
+						"6441d4fdadb4f2f89002d719"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ver todos los lotes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/lotes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lotes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buscar por id",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/lotes/6441d4fdadb4f2f89002d719",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lotes",
+						"6441d4fdadb4f2f89002d719"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

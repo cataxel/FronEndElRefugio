@@ -297,7 +297,7 @@
                     <!-- Page Heading -->
                     <div class="row d-flex align-items-center justify-content-between mb-0">
                         <div class="d-flex align-items-center justify-content-center mb-4">
-                            <h3 class="ml-2" style="color: black;">Añadir Proveedores</h3>
+                            <h3 class="ml-2" style="color: black;">Añadir Proveedor</h3>
                         </div>    
                         <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
                             <div class="mr-4">ID: </div>
@@ -307,52 +307,70 @@
 
                     <!-- Formulario -->
                     <div class="row d-block mt-3">
-                            <form class="user w-100 d-block justify-content-center align-items-center">
+                            <form class="user w-100 d-block justify-content-center align-items-center" id="formulario">
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
                                         <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Nombre</label>
-                                        <div class="col-sm-7">
+                                        <div class="col-sm-7 campos">
                                           <input type="text" class="form-control" id="form-control-nombre" >
+                                          <div class="mensaje-error">
+                                            Error
+                                          </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
                                         <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Dirección</label>
-                                        <div class="col-sm-8">
-                                          <input type="text" class="form-control" id="form-control-direccion" >
+                                        <div class="col-sm-7 campos">
+                                          <input type="text" class="form-control" id="form-control-direccion">
+                                          <div class="mensaje-error">
+                                            Error
+                                          </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
                                         <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Estado</label>
-                                        <div class="col-sm-7">
-                                          <input type="text" class="form-control" id="form-control-estado" >
+                                        <div class="col-sm-7 campos">
+                                          <input type="text" class="form-control" id="form-control-estado">
+                                          <div class="mensaje-error">
+                                            Error
+                                          </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
                                         <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Localidad</label>
-                                        <div class="col-sm-7">
-                                          <input type="text" class="form-control" id="form-control-localidad" >
+                                        <div class="col-sm-7 campos">
+                                          <input type="text" class="form-control" id="form-control-localidad">
+                                          <div class="mensaje-error">
+                                            Error
+                                          </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
                                         <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Codigo Postal</label>
-                                        <div class="col-sm-2">
-                                          <input type="number" class="form-control" id="form-control-codpost" >
+                                        <div class="col-sm-7 campos">
+                                          <input type="number" class="form-control" id="form-control-codpost">
+                                          <div class="mensaje-error">
+                                            Error
+                                          </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
                                         <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Teléfono</label>
-                                        <div class="col-sm-4">
-                                          <input type="tel" class="form-control" id="form-control-telefono" >
+                                        <div class="col-sm-7 campos">
+                                          <input type="tel" class="form-control" id="form-control-telefono">
+                                          <div class="mensaje-error">
+                                            Error
+                                          </div>
                                         </div>
                                     </div>
                                 </div>
@@ -453,6 +471,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Funcionamiento formulario -->
+    <script src="/js/conexionbd/proovedores-form.js"></script>
+
 
 
 </body>

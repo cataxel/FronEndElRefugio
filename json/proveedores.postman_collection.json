@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "3fa33cec-855b-40c9-9ee5-b91a51322612",
+		"name": "proveedores",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25341885"
+	},
+	"item": [
+		{
+			"name": "crear un  nuevo proveedor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombreProveedores\":\"profarm\",\n    \"telefonoProveedores\":\"3531400633\",\n    \"LocalidadProveedores\":\"ciudad de mexico\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/proveedor/nuevo/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"proveedor",
+						"nuevo",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar proveedor",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombreProveedores\":\"profarm\",\n    \"telefonoProveedores\":\"3531400633\",\n    \"LocalidadProveedores\":\"ciudad de mexico\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/proveedor/actualizar/6440945626b148f5db03f562",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"proveedor",
+						"actualizar",
+						"6440945626b148f5db03f562"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "desactivar proveedor",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Estatus\":false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/proveedor/desactivar/6440945626b148f5db03f562",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"proveedor",
+						"desactivar",
+						"6440945626b148f5db03f562"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ver todos los proveedores",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/proveedor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"proveedor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buscar por id",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/proveedor/6440945626b148f5db03f562",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"proveedor",
+						"6440945626b148f5db03f562"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

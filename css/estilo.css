@@ -4,6 +4,28 @@
   box-sizing: border-box;
 }
 
+.campos input:focus{
+    border-color: #00A0F0;
+}
+
+.error input{
+    border-color: red;
+}
+
+.mensaje-error{
+    line-height: 1;
+    color: red;
+    font-size: 15px;
+    width: 1000px;
+    padding-top: 1px;
+    margin: 0;
+    visibility: hidden;
+}
+
+.mensaje-error.error{
+    visibility: visible;
+}
+
 #wrapper{
     display: block;
 }
