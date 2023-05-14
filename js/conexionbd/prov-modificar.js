@@ -3,8 +3,10 @@ window.addEventListener('DOMContentLoaded', () => {
   })
 
   // Obtener datos de la API utilizando fetch
-  const getinfo = (id) => {
+  const getinfo = () => {
     const {id} = '6440945626b148f5db03f562';
+    var urlActual = window.location.href;
+    console.log(urlActual);
     console.log({id});
     fetch('https://backendelrefugio-production.up.railway.app/proveedor/:${id}')
     .then(response => response.json())
