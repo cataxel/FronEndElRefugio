@@ -62,7 +62,7 @@ $(document).ready(function() {
       if(filaSeleccionada === null){
         alert('Debes seleccionar un elemento de la tabla primero para continuar con la operación');
       }else{
-        location.href='proveedores-modifica.html'
+        location.href='proveedores-modifica.html#'+filaSeleccionada._id
       }
     })
     
