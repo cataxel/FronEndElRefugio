@@ -307,48 +307,66 @@
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
                                         <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Nombre</label>
-                                        <div class="col-sm-7">
+                                        <div class="col-sm-7 campos">
                                           <input type="text" class="form-control" id="form-control-nombre" name="Nombre">
+                                          <div class="mensaje-error">
+                                            Error
+                                          </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
                                         <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Dirección</label>
-                                        <div class="col-sm-7">
-                                          <input type="text" class="form-control" id="form-control-tipo" name="Direccion">
+                                        <div class="col-sm-7 campos">
+                                          <input type="text" class="form-control" id="form-control-direccion" name="Direccion">
+                                          <div class="mensaje-error">
+                                            Error
+                                          </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
                                         <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Estado</label>
-                                        <div class="col-sm-7">
-                                          <input type="text" class="form-control" id="form-control-prventa" name="Estado">
+                                        <div class="col-sm-7 campos">
+                                          <input type="text" class="form-control" id="form-control-estado" name="Estado">
+                                          <div class="mensaje-error">
+                                            Error
+                                          </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
                                         <label for="colFormLabel" style="color: black;"class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Localidad</label>
-                                        <div class="col-sm-7">
-                                          <input type="text" class="form-control" id="form-control-prcompra" name="Localidad">
+                                        <div class="col-sm-7 campos">
+                                          <input type="text" class="form-control" id="form-control-localidad" name="Localidad">
+                                          <div class="mensaje-error">
+                                            Error
+                                          </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
                                         <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Codigo Postal</label>
-                                        <div class="col-sm-7">
-                                          <input type="number" class="form-control" id="form-control-aplicacion" name="CP">
+                                        <div class="col-sm-7 campos">
+                                          <input type="text" class="form-control" id="form-control-codpost" name="CP">
+                                          <div class="mensaje-error">
+                                            Error
+                                          </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
                                         <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Email</label>
-                                        <div class="col-sm-7">
-                                          <input type="email" class="form-control" id="form-control-comp" name="Email">
+                                        <div class="col-sm-7 campos">
+                                          <input type="text" class="form-control" id="form-control-email" name="Email">
+                                          <div class="mensaje-error">
+                                            Error
+                                          </div>
                                         </div>
                                     </div>
                                 </div>
@@ -448,6 +466,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Funcionamiento formulario -->
+    <script src="js/conexionbd/laboratorios/laboratorios-nuevo.js"></script>
 
 
 </body>

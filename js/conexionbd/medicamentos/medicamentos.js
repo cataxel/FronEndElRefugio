@@ -10,22 +10,31 @@ $(document).ready(function() {
           { data: '_id',
             "defaultContent": "No definido"
           },
-          { data: 'nombreEmpleado',
+          { data: 'tipoMedicamento',
             "defaultContent": "No definido"
           },
-          { data: 'telefonoEmpleado',
+          { data: 'PrecioCompra',
             "defaultContent": "No definido"
           },
-          { data: 'puestoEmpleado',
+          { data: 'PrecioVenta',
             "defaultContent": "No definido"
           },
-          { data: 'edadEmpleado',
+          { data: 'Ganancia',
             "defaultContent": "No definido"
           },
-          { data: 'sexoEmpleado',
+          { data: 'Aplicacion',
             "defaultContent": "No definido"
           },
-          { data: 'AntiguedadEmpleado',
+          { data: 'RecetaNecesaria',
+            "defaultContent": "No definido"
+          },
+          { data: 'Compuesto',
+            "defaultContent": "No definido"
+          },
+          { data: 'Contenido',
+            "defaultContent": "No definido"
+          },
+          { data: 'PatenteOGenerico',
             "defaultContent": "No definido"
           },
           { data: 'Estatus',
@@ -84,12 +93,12 @@ $(document).ready(function() {
     });
   
     window.addEventListener('DOMContentLoaded', () => {
-      getProveedores();
+      getMedicamentos();
     })
   
     // Obtener datos de la API utilizando fetch
-    const getProveedores = () => {
-      fetch('https://backendelrefugio-production.up.railway.app/users/')
+    const getMedicamentos = () => {
+      fetch('https://backendelrefugio-production.up.railway.app/medicamentos/')
       .then(response => response.json())
       .then(data => {
         // Cargar los datos en DataTables

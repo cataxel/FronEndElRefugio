@@ -9,8 +9,12 @@ $(document).ready(function() {
       },
       columns: [
         { data: '_id' },
-        { data: 'nombreProveedores' },
-        { data: 'telefonoProveedores' },
+        { data: 'nombreProveedores',
+          "defaultContent": "No definido"
+        },
+        { data: 'telefonoProveedores',
+          "defaultContent": "No definido"
+        },
         { data: 'LocalidadProveedores',
           "defaultContent": "No definido"
         },

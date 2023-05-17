@@ -35,7 +35,7 @@ form.addEventListener('submit', (event)=>{
         let data = Object.fromEntries(formData);
         let jsonData = JSON.stringify(data);
         console.log(jsonData)
-        fetch('https://backendelrefugio-production.up.railway.app/proveedor/nuevo', {
+        fetch('https://backendelrefugio-production.up.railway.app/users/nuevo', {
             method: 'POST',
             mode: 'cors',
             //body: jsonData,
