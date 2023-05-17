@@ -1,51 +1,92 @@
-window.addEventListener('DOMContentLoaded', () => {
-    getinfo();
-  })
-
-  // Obtener datos de la API utilizando fetch
-  const getinfo = () => {
-    const {id} = '6440945626b148f5db03f562';
-    var urlActual = window.location.href;
-    console.log(urlActual);
-    console.log({id});
-    fetch('https://backendelrefugio-production.up.railway.app/proveedor/:${id}')
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-    });
-  }
-
-
 const form = document.getElementById('formulario');
 
+let idprov = document.querySelector('#id-emp');
 let nombre = document.querySelector('#form-control-nombre');
 let direccion = document.querySelector('#form-control-direccion');
 let estado = document.querySelector('#form-control-estado');
 let localidad = document.querySelector('#form-control-localidad');
 let codpost = document.querySelector('#form-control-codpost');
 let telefono = document.querySelector('#form-control-telefono');
+let estatus = document.querySelector('#btn-toggle');
 
 var telregex1 = /^\d{3}-\d{3}-\d{4}$/;
 var telregex2 = /^\d{10}$/;
 
 var ban = false;
 
+var urlActual = window.location.href;
+var idActual = urlActual.substring(urlActual.indexOf('=')+1, urlActual.length)
+
+
+window.addEventListener('DOMContentLoaded', () => {
+    getinfo();
+  })
+
+  // Obtener datos de la API utilizando fetch
+  const getinfo = () => {
+    fetch('https://backendelrefugio-production.up.railway.app/proveedor/?id=${idActual}')
+    .then(response1 => response1.json())
+    .then(data1 => {
+      var index;
+      for(index=0;index<data1.length;index++){
+        if(data1[index]._id===idActual){
+            break
+        }
+      }
+      idprov.value = data1[index]._id;
+      nombre.value = data1[index].nombreProveedores;
+      //direccion.value = data1[index].DireccionProveedores;
+      if(!(data1[index].DireccionProveedores===undefined)){
+        direccion.value = data1[index].DireccionProveedores;
+      }
+      //estado.value = data1[index].EstadoProveedores;
+      if(!(data1[index].EstadoProveedores===undefined)){
+        estado.value = data1[index].EstadoProveedores;
+      }
+      if(!(data1[index].LocalidadProveedores===undefined)){
+        localidad.value = data1[index].LocalidadProveedores;
+      }
+      //codpost.value = data1[index].CPProveedores;
+      if(!(data1[index].CPProveedores===undefined)){
+        codpost.value = data1[index].CPProveedores;
+      }
+      telefono.value = data1[index].telefonoProveedores;
+      var toggleButton = $('#btn-toggle');
+      if(data1[index].Estatus===true){
+        toggleButton.prop('checked', true);
+        toggleButton.bootstrapToggle('on');
+      }else{
+        toggleButton.prop('checked', false);
+        toggleButton.bootstrapToggle('off');
+      }
+    });
+  }
+
 form.addEventListener('submit', (event)=>{
     event.preventDefault();
     validarcampos();
+    const estat = estatus.checked===true;
+    console.log(estat)
     if(ban==true){
-        let formData = new FormData(form);
-        let data = Object.fromEntries(formData);
-        let jsonData = JSON.stringify(data);
-        console.log(jsonData)
-        fetch('https://backendelrefugio-production.up.railway.app/proveedor/:id', {
-            method: 'POST',
+        const a = {
+            nombreProveedores: nombre.value,
+            telefonoProveedores: telefono.value,
+            LocalidadProveedores: localidad.value,
+            EstadoProveedores: estado.value,
+            CPProveedores: codpost.value,
+            DireccionProveedores: direccion.value,
+            Estatus: estat,
+          };
+          console.log(a);
+          console.log(JSON.stringify(a))
+        fetch('https://backendelrefugio-production.up.railway.app/proveedor/actualizar/'+idActual, {
+            method: 'PUT',
             mode: 'cors',
-            body: jsonData,
+            //body: jsonData,
+            body: JSON.stringify(a)
         }).then(res => res.json())
         .then(result=>console.log(result))
         .catch(err => alert(err))
-
     }
 })
 

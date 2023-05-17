@@ -23,6 +23,16 @@ $(document).ready(function() {
         { data: 'DireccionProveedores',
           "defaultContent": "No definido"
         },
+        { data: 'Estatus',
+          render: function(type, row) {
+              if (type === true) {
+                return 'Activo';
+              } else if (type === false) {
+                return 'Inactivo';
+              }
+            return type;
+          }
+        },
       ],
       language: {
         "lengthMenu": "Mostrando _MENU_ registros por página",

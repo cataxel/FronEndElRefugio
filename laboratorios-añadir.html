@@ -298,29 +298,25 @@
                     <div class="row d-flex align-items-center justify-content-between mb-0">
                         <div class="d-flex align-items-center justify-content-center mb-4">
                             <h3 class="ml-2" style="color: black;">Añadir Laboratorio</h3>
-                        </div>    
-                        <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
-                            <div class="mr-4">ID: </div>
-                            <input class="form-control mr-1" id="id-emp" type="text" style="border-color: black;" disabled>
-                        </div>    
+                        </div>   
                     </div>
 
                     <!-- Formulario -->
                     <div class="row d-block mt-3">
-                            <form class="user w-100 d-block justify-content-center align-items-center">
+                            <form class="user w-100 d-block justify-content-center align-items-center" id="formulario">
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
                                         <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Nombre</label>
                                         <div class="col-sm-7">
-                                          <input type="text" class="form-control" id="form-control-nombre" >
+                                          <input type="text" class="form-control" id="form-control-nombre" name="Nombre">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
                                         <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Dirección</label>
-                                        <div class="col-sm-8">
-                                          <input type="text" class="form-control" id="form-control-tipo" >
+                                        <div class="col-sm-7">
+                                          <input type="text" class="form-control" id="form-control-tipo" name="Direccion">
                                         </div>
                                     </div>
                                 </div>
@@ -328,7 +324,7 @@
                                     <div class="row filas-form">
                                         <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Estado</label>
                                         <div class="col-sm-7">
-                                          <input type="text" class="form-control" id="form-control-prventa" >
+                                          <input type="text" class="form-control" id="form-control-prventa" name="Estado">
                                         </div>
                                     </div>
                                 </div>
@@ -336,15 +332,15 @@
                                     <div class="row filas-form">
                                         <label for="colFormLabel" style="color: black;"class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Localidad</label>
                                         <div class="col-sm-7">
-                                          <input type="text" class="form-control" id="form-control-prcompra" >
+                                          <input type="text" class="form-control" id="form-control-prcompra" name="Localidad">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
                                         <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Codigo Postal</label>
-                                        <div class="col-sm-2">
-                                          <input type="number" class="form-control" id="form-control-aplicacion" >
+                                        <div class="col-sm-7">
+                                          <input type="number" class="form-control" id="form-control-aplicacion" name="CP">
                                         </div>
                                     </div>
                                 </div>
@@ -352,7 +348,7 @@
                                     <div class="row filas-form">
                                         <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Email</label>
                                         <div class="col-sm-7">
-                                          <input type="email" class="form-control" id="form-control-comp" >
+                                          <input type="email" class="form-control" id="form-control-comp" name="Email">
                                         </div>
                                     </div>
                                 </div>
