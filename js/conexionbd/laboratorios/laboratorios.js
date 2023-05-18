@@ -8,7 +8,8 @@ $(document).ready(function() {
         },
         columns: [
           { data: '_id',
-            "defaultContent": "No definido"
+            "defaultContent": "No definido",
+            visible: false 
           },
           { data: 'Nombre',
             "defaultContent": "No definido"
@@ -37,7 +38,7 @@ $(document).ready(function() {
                 }
                 return type;
             }
-           },
+          },
         ],
         language: {
           "lengthMenu": "Mostrando _MENU_ registros por página",
@@ -77,18 +78,18 @@ $(document).ready(function() {
         if(filaSeleccionada === null){
           alert('Debes seleccionar un elemento de la tabla primero para continuar con la operación');
         }else{
-          location.href='empleados-modificar.html?id='+filaSeleccionada._id
+          location.href='laboratorios-modificar.html?id='+filaSeleccionada._id
         }
       })
       
     });
   
     window.addEventListener('DOMContentLoaded', () => {
-      getProveedores();
+      getLabs();
     })
   
     // Obtener datos de la API utilizando fetch
-    const getProveedores = () => {
+    const getLabs = () => {
       fetch('https://backendelrefugio-production.up.railway.app/laboratorios/')
       .then(response => response.json())
       .then(data => {

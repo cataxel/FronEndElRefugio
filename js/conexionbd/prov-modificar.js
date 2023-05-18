@@ -81,11 +81,13 @@ form.addEventListener('submit', (event)=>{
           console.log(JSON.stringify(a))
         fetch('https://backendelrefugio-production.up.railway.app/proveedor/actualizar/'+idActual, {
             method: 'PUT',
-            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
             //body: jsonData,
             body: JSON.stringify(a)
         }).then(res => res.json())
-        .then(result=>console.log(result))
+        .then(result=>showAlert())
         .catch(err => alert(err))
     }
 })
@@ -176,6 +178,42 @@ function removeErrorFor(input){
     console.log(mensajeError)
     mensajeError.className = 'mensaje-error';
     formControl.classList.remove('error');
+}
+
+function showAlert() {
+    // Create the alert element
+    // Remove existing alert, if any
+    var container = document.getElementById('alert-container');
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+
+    var alertDiv = document.createElement('div');
+    alertDiv.classList.add('alert', 'alert-success', 'alert-dismissible');
+    alertDiv.setAttribute('role', 'alert');
+
+    // Add the close button
+    var closeButton = document.createElement('button');
+    closeButton.classList.add('close');
+    closeButton.setAttribute('type', 'button');
+    closeButton.setAttribute('data-dismiss', 'alert');
+    closeButton.setAttribute('aria-label', 'Close');
+
+    var closeIcon = document.createElement('span');
+    closeIcon.setAttribute('aria-hidden', 'true');
+    closeIcon.innerHTML = '&times;';
+
+    closeButton.appendChild(closeIcon);
+    alertDiv.appendChild(closeButton);
+
+    // Add the alert message
+    var message = document.createElement('span');
+    message.textContent = 'Proveedor modificado con éxito';
+
+    alertDiv.appendChild(message);
+
+    // Add the alert to the document
+    container.appendChild(alertDiv);
 }
 
 document.getElementById('formulario').addEventListener('focusin', (event) => {

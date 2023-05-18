@@ -1,30 +1,93 @@
 const form = document.getElementById('formulario');
 
+let idemp = document.querySelector('#id-emp');
 let nombre = document.querySelector('#form-control-nombre');
 let direccion = document.querySelector('#form-control-direccion');
 let estado = document.querySelector('#form-control-estado');
 let localidad = document.querySelector('#form-control-localidad');
 let codpost = document.querySelector('#form-control-codpost');
 let email = document.querySelector('#form-control-email');
+let estatus = document.querySelector('#btn-toggle');
+
+var telregex1 = /^\d{3}-\d{3}-\d{4}$/;
+var telregex2 = /^\d{10}$/;
 
 var ban = false;
+
+var urlActual = window.location.href;
+var idActual = urlActual.substring(urlActual.indexOf('=')+1, urlActual.length)
+
+
+window.addEventListener('DOMContentLoaded', () => {
+    getinfo();
+  })
+
+  // Obtener datos de la API utilizando fetch
+  const getinfo = () => {
+    fetch('https://backendelrefugio-production.up.railway.app/laboratorios/?id=${idActual}')
+    .then(response1 => response1.json())
+    .then(data1 => {
+      var index;
+      for(index=0;index<data1.length;index++){
+        if(data1[index]._id===idActual){
+            break
+        }
+      }
+      idemp.value = data1[index]._id;
+      nombre.value = data1[index].Nombre;
+      //direccion.value = data1[index].DireccionProveedores;
+      if(!(data1[index].Direccion===undefined)){
+        direccion.value = data1[index].Direccion;
+      }
+      //estado.value = data1[index].EstadoProveedores;
+      if(!(data1[index].Estado===undefined)){
+        estado.value = data1[index].Estado;
+      }
+      if(!(data1[index].CP===undefined)){
+        codpost.value = data1[index].CP;
+      }
+      //codpost.value = data1[index].CPProveedores;
+      if(!(data1[index].Localidad===undefined)){
+        localidad.value = data1[index].Localidad;
+      }
+      email.value = data1[index].Email;
+      var toggleButton = $('#btn-toggle');
+      if(data1[index].Estatus===true){
+        toggleButton.prop('checked', true);
+        toggleButton.bootstrapToggle('on');
+      }else{
+        toggleButton.prop('checked', false);
+        toggleButton.bootstrapToggle('off');
+      }
+    });
+  }
 
 form.addEventListener('submit', (event)=>{
     event.preventDefault();
     validarcampos();
+    const estat = estatus.checked===true;
+    console.log(estat)
     if(ban==true){
-        let formData = new FormData(form);
-        let data = Object.fromEntries(formData);
-        let jsonData = JSON.stringify(data);
-        console.log(jsonData)
-        fetch('https://backendelrefugio-production.up.railway.app/laboratorios/nuevo', {
-            method: 'POST',
+        const a = {
+            Nombre: nombre.value,
+            Direccion: direccion.value,
+            Estado: estado.value,
+            CP: codpost.value,
+            Localidad: localidad.value,
+            Email: email.value,
+            Estatus: estat,
+          };
+          console.log(a);
+          console.log(JSON.stringify(a))
+        fetch('https://backendelrefugio-production.up.railway.app/laboratorios/actualizar/'+idActual, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: jsonData,
+            //body: jsonData,
+            body: JSON.stringify(a)
         }).then(res => res.json())
-        .then(result=>vaciarCampos())
+        .then(result=>showAlert())
         .catch(err => alert(err))
     }
 })
@@ -84,7 +147,7 @@ function validarcampos()
         return false;
     }
 }
-
+  
 function setErrorFor(input, message){
     const formControl = input.parentElement;
     const celda = formControl.querySelector('input');
@@ -93,25 +156,17 @@ function setErrorFor(input, message){
     const mensajeError = formControl.querySelector('.mensaje-error');
     mensajeError.className = 'mensaje-error error';
     mensajeError.innerText = message;
+    console.log(mensajeError)
 }
 
 function removeErrorFor(input){
-    const formControl1 = input.parentElement;
-    const celda = formControl1.querySelector('input');
-    const mensajeError1 = formControl1.querySelector('.mensaje-error');
-    mensajeError1.className = 'mensaje-error';
-    mensajeError1.textContent = 'Error message';
-    formControl1.classList.remove('error');
-}
-
-function vaciarCampos(){
-    showAlert();
-    nombre.value = "";
-    direccion.value = ""; 
-    estado.value = ""; 
-    localidad.value = ""; 
-    codpost.value = ""; 
-    email.value = ""; 
+    const formControl = input.parentElement;
+    const celda = formControl.querySelector('input');
+    const mensajeError = formControl.querySelector('.mensaje-error');
+    mensajeError.textContent = 'Error message';
+    console.log(mensajeError)
+    mensajeError.className = 'mensaje-error';
+    formControl.classList.remove('error');
 }
 
 function showAlert() {
@@ -142,7 +197,7 @@ function showAlert() {
 
     // Add the alert message
     var message = document.createElement('span');
-    message.textContent = 'Laboratorio registrado con éxito';
+    message.textContent = 'Laboratorio modificado con éxito';
 
     alertDiv.appendChild(message);
 

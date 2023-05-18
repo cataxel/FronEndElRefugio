@@ -23,10 +23,12 @@ form.addEventListener('submit', (event)=>{
         console.log(jsonData)
         fetch('https://backendelrefugio-production.up.railway.app/proveedor/nuevo', {
             method: 'POST',
-            mode: 'cors',
-            //body: jsonData,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: jsonData,
         }).then(res => res.json())
-        .then(result=>console.log(result))
+        .then(result=>vaciarCampos())
         .catch(err => alert(err))
     }
 })
@@ -115,6 +117,52 @@ function removeErrorFor(input){
     mensajeError1.className = 'mensaje-error';
     mensajeError1.textContent = 'Error message';
     formControl1.classList.remove('error');
+}
+
+function vaciarCampos(){
+    showAlert();
+    nombre.value = "";
+    direccion.value = ""; 
+    estado.value = ""; 
+    localidad.value = ""; 
+    codpost.value = ""; 
+    telefono.value = ""; 
+}
+
+function showAlert() {
+    // Create the alert element
+    // Remove existing alert, if any
+    var container = document.getElementById('alert-container');
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+
+    var alertDiv = document.createElement('div');
+    alertDiv.classList.add('alert', 'alert-success', 'alert-dismissible');
+    alertDiv.setAttribute('role', 'alert');
+
+    // Add the close button
+    var closeButton = document.createElement('button');
+    closeButton.classList.add('close');
+    closeButton.setAttribute('type', 'button');
+    closeButton.setAttribute('data-dismiss', 'alert');
+    closeButton.setAttribute('aria-label', 'Close');
+
+    var closeIcon = document.createElement('span');
+    closeIcon.setAttribute('aria-hidden', 'true');
+    closeIcon.innerHTML = '&times;';
+
+    closeButton.appendChild(closeIcon);
+    alertDiv.appendChild(closeButton);
+
+    // Add the alert message
+    var message = document.createElement('span');
+    message.textContent = 'Proveedor modificado con éxito';
+
+    alertDiv.appendChild(message);
+
+    // Add the alert to the document
+    container.appendChild(alertDiv);
 }
 
 document.getElementById('formulario').addEventListener('focusin', (event) => {
