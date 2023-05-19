@@ -157,7 +157,7 @@ function showAlert() {
 
     // Add the alert message
     var message = document.createElement('span');
-    message.textContent = 'Proveedor modificado con éxito';
+    message.textContent = 'Proveedor registrado con éxito';
 
     alertDiv.appendChild(message);
 

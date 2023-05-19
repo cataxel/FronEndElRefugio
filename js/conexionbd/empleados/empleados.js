@@ -27,11 +27,16 @@ $(document).ready(function() {
           },
           { data: 'AntiguedadEmpleado',
             "defaultContent": "No definido",
-            render: function(type, row) {
-              if (type === "") {
-                  return 'N/A';
-              }
-              return type;
+            render: 
+              function (type) {
+                var isoDate = type;
+                var date = new Date(isoDate);
+                var year = date.getUTCFullYear();
+                var month = String(date.getUTCMonth() + 1).padStart(2, '0');
+                var day = String(date.getUTCDate()).padStart(2, '0');
+                console.log(day);
+                var formattedDate = day + '-' + month + '-' + year;
+                return formattedDate
             }
           },
           { data: 'Estatus',

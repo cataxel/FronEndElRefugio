@@ -86,7 +86,16 @@ $(document).ready(function() {
         if(filaSeleccionada === null){
           alert('Debes seleccionar un elemento de la tabla primero para continuar con la operación');
         }else{
-          location.href='empleados-modificar.html?id='+filaSeleccionada._id
+          location.href='medicamentos-modificar.html?id='+filaSeleccionada._id
+        }
+      })
+
+      var mod = document.querySelector('#visualizar');
+      mod.addEventListener('click', ()=>{
+        if(filaSeleccionada === null){
+          alert('Debes seleccionar un elemento de la tabla primero para continuar con la operación');
+        }else{
+          location.href='medicamentos-visualizar.html?id='+filaSeleccionada._id
         }
       })
       
