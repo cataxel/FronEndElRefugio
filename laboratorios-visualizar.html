@@ -23,6 +23,7 @@
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -301,101 +302,105 @@
                         </div>    
                         <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
                             <div class="mr-4">ID: </div>
-                            <input class="form-control mr-1" id="id-emp" type="text" style="border-color: black;" disabled>
-                        </div>    
+                            <input class="form-control mr-5 col-sm-10" id="id-emp" type="text" style="border-color: black;" disabled>
+                        </div>     
                     </div>
 
                     <!-- Formulario -->
                     <div class="row d-block mt-3">
-                            <form class="user w-100 d-block justify-content-center align-items-center">
-                                <div class="form-group ml-3">
-                                    <div class="row filas-form">
-                                        <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center">Nombre</label>
-                                        <div class="col-sm-7">
-                                          <input type="text" class="form-control" id="form-control-nombre" style="border-color: black;" disabled>
-                                        </div>
+                        <form class="user w-100 d-block justify-content-center align-items-center" id="formulario">
+                            <div class="form-group ml-3">
+                                <div class="row filas-form">
+                                    <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Nombre *</label>
+                                    <div class="col-sm-7 campos">
+                                      <input type="text" class="form-control" id="form-control-nombre" name="Nombre" disabled>
+                                      <div class="mensaje-error">
+                                        Error
+                                      </div>
                                     </div>
                                 </div>
-                                <div class="form-group ml-3">
-                                    <div class="row filas-form">
-                                        <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center">Dirección</label>
-                                        <div class="col-sm-8">
-                                          <input type="text" class="form-control" id="form-control-tipo" style="border-color: black;" disabled>
-                                        </div>
+                            </div>
+                            <div class="form-group ml-3">
+                                <div class="row filas-form">
+                                    <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Dirección *</label>
+                                    <div class="col-sm-7 campos">
+                                      <input type="text" class="form-control" id="form-control-direccion" name="Direccion" disabled>
+                                      <div class="mensaje-error">
+                                        Error
+                                      </div>
                                     </div>
                                 </div>
-                                <div class="form-group ml-3">
-                                    <div class="row filas-form">
-                                        <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center">Estado</label>
-                                        <div class="col-sm-7">
-                                          <input type="text" class="form-control" id="form-control-prventa" style="border-color: black;" disabled>
-                                        </div>
+                            </div>
+                            <div class="form-group ml-3">
+                                <div class="row filas-form">
+                                    <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Estado *</label>
+                                    <div class="col-sm-7 campos">
+                                      <input type="text" class="form-control" id="form-control-estado" name="Estado" disabled>
+                                      <div class="mensaje-error">
+                                        Error
+                                      </div>
                                     </div>
                                 </div>
-                                <div class="form-group ml-3">
-                                    <div class="row filas-form">
-                                        <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center">Localidad</label>
-                                        <div class="col-sm-7">
-                                          <input type="text" class="form-control" id="form-control-prcompra" style="border-color: black;" disabled>
-                                        </div>
+                            </div>
+                            <div class="form-group ml-3">
+                                <div class="row filas-form">
+                                    <label for="colFormLabel" style="color: black;"class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Localidad *</label>
+                                    <div class="col-sm-7 campos">
+                                      <input type="text" class="form-control" id="form-control-localidad" name="Localidad" disabled>
+                                      <div class="mensaje-error">
+                                        Error
+                                      </div>
                                     </div>
                                 </div>
-                                <div class="form-group ml-3">
-                                    <div class="row filas-form">
-                                        <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center">Codigo Postal</label>
-                                        <div class="col-sm-2">
-                                          <input type="number" class="form-control" id="form-control-aplicacion" style="border-color: black;" disabled>
-                                        </div>
+                            </div>
+                            <div class="form-group ml-3">
+                                <div class="row filas-form">
+                                    <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Codigo Postal *</label>
+                                    <div class="col-sm-7 campos">
+                                      <input type="text" class="form-control" id="form-control-codpost" name="CP" disabled>
+                                      <div class="mensaje-error">
+                                        Error
+                                      </div>
                                     </div>
                                 </div>
-                                <div class="form-group ml-3">
-                                    <div class="row filas-form">
-                                        <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center">Email</label>
-                                        <div class="col-sm-7">
-                                          <input type="email" class="form-control" id="form-control-comp" style="border-color: black;" disabled>
-                                        </div>
+                            </div>
+                            <div class="form-group ml-3">
+                                <div class="row filas-form">
+                                    <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Email</label>
+                                    <div class="col-sm-7 campos">
+                                      <input type="text" class="form-control" id="form-control-email" name="Email" disabled>
+                                      <div class="mensaje-error">
+                                        Error
+                                      </div>
                                     </div>
                                 </div>
-                                <div class="form-group ml-3">
-                                    <div class="row filas-form">
-                                        <div class="custom-control custom-switch d-flex justify-content-between">
-                                            <div class="toggleActivo">
-                                                <div class="col-sm-4">
-                                                    <input type="checkbox" data-toggle="toggle" class="custom-control-input" id="pat_gen" disabled>
-                                                    <label class="custom-control-label" for="pat_gen" style="color: black;">Activo</label>
+                            </div>
+                            <div class="form-group ml-3">
+                                <div class="row filas-form">
+                                    <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Estatus</label>
+                                    <div class="col-sm-7 campos">
+                                        <input type="checkbox" id="btn-toggle" data-toggle="toggle" data-on="Activado" data-off="Desactivado" data-onstyle="primary" 
+                                        data-offstyle="dark" data-size="medium" name="Estatus" class="form-control">
+                                    </div>
+                                </div>
+                            </div>     
+                             
+                            <!-- Botones -->
+                            <div class="ml-auto w-50 d-flex justify-content-end gpo-btn-edit">
+                                <div class="col-xl-3 col-md-6 modificar btn-edit">
+                                    <button type="button" onclick="location.href='laboratorios.html'" class="card shadow h-50 w-auto py-2 btn-mdt" style="background-color: #00A0F0;" >
+                                        <div class="card-body d-flex align-items-center justify-content-center">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col">
+                                                    <p class="h5 mb-0 font-weight-bold" style="color: white;">Regresar</p>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                 
-                                <!-- Botones -->
-                                <div class="ml-auto w-50 d-flex justify-content-end gpo-btn-edit">
-                                    <div class="col-xl-3 col-md-6 modificar btn-edit">
-                                        <button type="button" onclick="location.href='laboratorios.html'" class="card shadow h-50 w-auto py-2 btn-mdt" style="background-color: #00A0F0;" >
-                                            <div class="card-body d-flex align-items-center justify-content-center">
-                                                <div class="row no-gutters align-items-center">
-                                                    <div class="col">
-                                                        <p class="h5 mb-0 font-weight-bold" style="color: white;">Cancelar</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </button>
-                                    </div>  
-                                    <div class="col-xl-3 col-md-6 btn-edit">
-                                        <button type="submit" class="card shadow h-50 w-auto py-2 btn-mdt" style="background-color: #00A0F0;" >
-                                            <div class="card-body d-flex align-items-center justify-content-center">
-                                                <div class="row no-gutters align-items-center">
-                                                    <div class="col">
-                                                         <p class="h5 mb-0 font-weight-bold" style="color: white;">Guardar</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </button>
-                                    </div>  
-                                </div>
-                            </form>
-                    </div>                           
+                                    </button>
+                                </div>  
+                            </div>
+                        </form>
+                    </div>                            
                 </div>
                 <!-- /.container-fluid -->
 
@@ -452,6 +457,7 @@
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
     <script src="js/tablas.js"></script>
+    <script src="js/conexionbd/laboratorios/laboratorios-visualizar.js"></script>
 
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
@@ -464,6 +470,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
 
 </body>

@@ -31,16 +31,27 @@ form.addEventListener('submit', (event)=>{
     event.preventDefault();
     validarcampos();
     if(ban==true){
-        let formData = new FormData(form);
-        let data = Object.fromEntries(formData);
-        let jsonData = JSON.stringify(data);
-        console.log(jsonData)
+        var dateValue = antiguedad.value;
+        var date = new Date(dateValue);
+        var dateISOString = date.toISOString();
+        const a = {
+            nombreEmpleado: nombre.value,
+            telefonoEmpleado: telefono.value,
+            puestoEmpleado: puesto.value,
+            edadEmpleado: edad.value,
+            sexoEmpleado: sexo.value,
+            AntiguedadEmpleado: dateISOString,
+          };
+        console.log(JSON.stringify(a));
         fetch('https://backendelrefugio-production.up.railway.app/users/nuevo', {
             method: 'POST',
-            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
             //body: jsonData,
+            body: JSON.stringify(a),
         }).then(res => res.json())
-        .then(result=>console.log(result))
+        .then(result=>vaciarCampos())
         .catch(err => alert(err))
     }
 })
@@ -51,7 +62,7 @@ function validarcampos()
     console.log(antiguedad.value);
     var cont = 0;
     if(nombre.value.trim() === ''){
-        setErrorFor(nombre, 'Debes ingresar el nombre del proveedor.');
+        setErrorFor(nombre, 'Debes ingresar el nombre del empleado.');
     }else if(!validarNombre(nombre.value.trim())){
         setErrorFor(nombre, 'Ingresaste caractéres incorrectos');
     }else{        
@@ -102,7 +113,7 @@ function validarcampos()
 
 
     if(telefono.value.trim() === ''){
-        setErrorFor(telefono, 'Debes ingresar el telefono del proveedor.');
+        setErrorFor(telefono, 'Debes ingresar el telefono del empleado.');
     }else if(!validarTelefono(telefono.value.trim())){
         setErrorFor(telefono, 'Ingresaste un numero de telefono inválido');
     }else{        
@@ -160,6 +171,52 @@ function removeErrorFor(input){
     mensajeError1.textContent = 'Error message';
     formControl1.classList.remove('error');
 }
+
+function vaciarCampos(){
+    showAlert();
+    nombre.value = "";
+    puesto.value = ""; 
+    edad.value = ""; 
+    valueData();
+    telefono.value = ""; 
+}
+
+function showAlert() {
+    // Create the alert element
+    // Remove existing alert, if any
+    var container = document.getElementById('alert-container');
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+
+    var alertDiv = document.createElement('div');
+    alertDiv.classList.add('alert', 'alert-success', 'alert-dismissible');
+    alertDiv.setAttribute('role', 'alert');
+
+    // Add the close button
+    var closeButton = document.createElement('button');
+    closeButton.classList.add('close');
+    closeButton.setAttribute('type', 'button');
+    closeButton.setAttribute('data-dismiss', 'alert');
+    closeButton.setAttribute('aria-label', 'Close');
+
+    var closeIcon = document.createElement('span');
+    closeIcon.setAttribute('aria-hidden', 'true');
+    closeIcon.innerHTML = '&times;';
+
+    closeButton.appendChild(closeIcon);
+    alertDiv.appendChild(closeButton);
+
+    // Add the alert message
+    var message = document.createElement('span');
+    message.textContent = 'Empleado registrado con éxito';
+
+    alertDiv.appendChild(message);
+
+    // Add the alert to the document
+    container.appendChild(alertDiv);
+}
+
 
 document.getElementById('formulario').addEventListener('focusin', (event) => {
     /* event.target.value = ''; */

@@ -27,7 +27,13 @@ $(document).ready(function() {
             "defaultContent": "No definido"
           },
           { data: 'Email',
-            "defaultContent": "No definido"
+            "defaultContent": "No definido",
+            render: function(type, row) {
+              if (type === "") {
+                  return 'N/A';
+              }
+              return type;
+            }
           },
           { data: 'Estatus',
             render: function(type, row) {
@@ -79,6 +85,15 @@ $(document).ready(function() {
           alert('Debes seleccionar un elemento de la tabla primero para continuar con la operación');
         }else{
           location.href='laboratorios-modificar.html?id='+filaSeleccionada._id
+        }
+      })
+
+      var visual = document.querySelector('#visualizar');
+      visual.addEventListener('click', ()=>{
+        if(filaSeleccionada === null){
+          alert('Debes seleccionar un elemento de la tabla primero para continuar con la operación');
+        }else{
+          location.href='laboratorios-visualizar.html?id='+filaSeleccionada._id
         }
       })
       

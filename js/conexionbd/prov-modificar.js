@@ -104,8 +104,8 @@ function validarcampos()
         cont += 1;
     }
 
-    if(direccion.value.trim() === ''){
-        setErrorFor(direccion, 'Debes ingresar la dirección del proveedor.');
+    if(localidad.value.trim() === ''){
+        setErrorFor(localidad, 'Debes ingresar la localidad del proveedor.');
     }else{        
         cont += 1;
     }

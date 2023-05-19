@@ -23,6 +23,7 @@
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -344,7 +345,7 @@
                                     <div class="row filas-form">
                                         <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Antigüedad</label>
                                         <div class="col-sm-2">
-                                          <input type="number" class="form-control" id="form-control-antigùedad" >
+                                          <input type="date" class="form-control" id="form-control-antigùedad" >
                                         </div>
                                     </div>
                                 </div>
@@ -352,23 +353,20 @@
                                     <div class="row filas-form">
                                         <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Teléfono</label>
                                         <div class="col-sm-4">
-                                          <input type="tel" class="form-control" id="form-control-telefono" >
+                                          <input type="text" class="form-control" id="form-control-telefono" >
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
-                                        <div class="custom-control custom-switch d-flex justify-content-between">
-                                            <div class="toggleActivo">
-                                                <div class="col-sm-4">
-                                                    <input type="checkbox" data-toggle="toggle" class="custom-control-input" id="pat_gen">
-                                                    <label class="custom-control-label" for="pat_gen" style="color: black;">Activo</label>
-                                                </div>
-                                            </div>
+                                        <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Estatus</label>
+                                        <div class="col-sm-7 campos">
+                                            <input type="checkbox" id="btn-toggle" data-toggle="toggle" data-on="Activado" data-off="Desactivado" data-onstyle="primary" 
+                                            data-offstyle="dark" data-size="medium" name="Estatus" class="form-control">
                                         </div>
                                     </div>
-                                </div>
+                                </div>  
                                  
                                 <!-- Botones -->
                                 <div class="ml-auto w-50 d-flex justify-content-end gpo-btn-edit">
@@ -454,6 +452,8 @@
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
     <script src="js/tablas.js"></script>
+    <script src="js/conexionbd/empleados/empleados-modificar.js"></script>
+
 
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
@@ -466,6 +466,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
 
 </body>

@@ -26,7 +26,13 @@ $(document).ready(function() {
             "defaultContent": "No definido"
           },
           { data: 'AntiguedadEmpleado',
-            "defaultContent": "No definido"
+            "defaultContent": "No definido",
+            render: function(type, row) {
+              if (type === "") {
+                  return 'N/A';
+              }
+              return type;
+            }
           },
           { data: 'Estatus',
             render: function(type, row) {
@@ -79,7 +85,16 @@ $(document).ready(function() {
         }else{
           location.href='empleados-modificar.html?id='+filaSeleccionada._id
         }
-      })
+      });
+
+      var visual = document.querySelector('#visualizar');
+      visual.addEventListener('click', ()=>{
+        if(filaSeleccionada === null){
+          alert('Debes seleccionar un elemento de la tabla primero para continuar con la operación');
+        }else{
+          location.href='empleados-visualizar.html?id='+filaSeleccionada._id
+        }
+      });
       
     });
   
