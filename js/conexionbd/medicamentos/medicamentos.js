@@ -8,6 +8,10 @@ $(document).ready(function() {
         },
         columns: [
           { data: '_id',
+            "defaultContent": "No definido",
+            visible: false 
+          },
+          { data: 'nombreMedicamento',
             "defaultContent": "No definido"
           },
           { data: 'tipoMedicamento',
@@ -16,16 +20,13 @@ $(document).ready(function() {
           { data: 'PrecioCompra',
             "defaultContent": "No definido"
           },
-          { data: 'PrecioVenta',
-            "defaultContent": "No definido"
-          },
           { data: 'Ganancia',
             "defaultContent": "No definido"
           },
-          { data: 'Aplicacion',
+          { data: 'PrecioVenta',
             "defaultContent": "No definido"
           },
-          { data: 'RecetaNecesaria',
+          { data: 'Aplicacion',
             "defaultContent": "No definido"
           },
           { data: 'Compuesto',
@@ -37,16 +38,17 @@ $(document).ready(function() {
           { data: 'PatenteOGenerico',
             "defaultContent": "No definido"
           },
-          { data: 'Estatus',
+          { data: 'RecetaNecesaria',
+            "defaultContent": "No definido",
             render: function(type, row) {
                 if (type === true) {
-                    return 'Activo';
+                    return 'Si';
                 } else if (type === false) {
-                    return 'Inactivo';
+                    return 'No';
                 }
                 return type;
             }
-           },
+          },
         ],
         language: {
           "lengthMenu": "Mostrando _MENU_ registros por página",

@@ -33,13 +33,8 @@ form.addEventListener('submit', (event)=>{
     }else{
         clfinal = 'Genérico'
     }
-    var recnec = rec.checked;
-    var recfinal
-    if(recnec===true){
-        recfinal = 'Si'
-    }else{
-        recfinal = 'No'
-    }
+    const receta = rec.checked===true;
+    console.log(receta)
     if(ban==true){
         const a = {
             nombreMedicamento: nombre.value,
@@ -47,9 +42,10 @@ form.addEventListener('submit', (event)=>{
             PrecioCompra: prcompra.value,
             PrecioVenta: prventa.value,
             Ganancia: ganancia.value,
-            RecetaNecesaria: recfinal,
+            RecetaNecesaria: receta,
+            Aplicacion: aplicacion.value,
             Compuesto: comp.value,
-            Contendido: contenido.value,
+            Contenido: contenido.value,
             PatenteOGenerico: clfinal,
 
         };

@@ -61,12 +61,12 @@ window.addEventListener('DOMContentLoaded', () => {
       if(!(data1[index].Compuesto===undefined)){
         comp.value = data1[index].Compuesto;
       }
-      if(!(data1[index].Contendido===undefined)){
-        contenido.value = data1[index].Contendido;
+      if(!(data1[index].Contenido===undefined)){
+        contenido.value = data1[index].Contenido;
       }
       var toggleButtonRec = $('#btn-toggle-rec');
       var toggleButtonCls = $('#btn-toggle-clasif');
-      if(data1[index].RecetaNecesaria==='Si'){
+      if(data1[index].RecetaNecesaria===true){
         toggleButtonRec.prop('checked', true);
         toggleButtonRec.bootstrapToggle('on');
       }else{
@@ -95,13 +95,7 @@ form.addEventListener('submit', (event)=>{
     }else{
         clfinal = 'Genérico'
     }
-    var recnec = rec.checked;
-    var recfinal
-    if(recnec===true){
-        recfinal = 'Si'
-    }else{
-        recfinal = 'No'
-    }
+    const receta = rec.checked===true;
     if(ban==true){
         const a = {
             nombreMedicamento: nombre.value,
@@ -109,21 +103,21 @@ form.addEventListener('submit', (event)=>{
             PrecioCompra: prcompra.value,
             PrecioVenta: prventa.value,
             Ganancia: ganancia.value,
-            RecetaNecesaria: recfinal,
+            RecetaNecesaria: receta,
+            Aplicacion: aplicacion.value,
             Compuesto: comp.value,
-            Contendido: contenido.value,
+            Contenido: contenido.value,
             PatenteOGenerico: clfinal,
-
         };
         console.log(JSON.stringify(a));
-        fetch('https://backendelrefugio-production.up.railway.app/medicamentos/actualizar'+idActual, {
+        fetch('https://backendelrefugio-production.up.railway.app/medicamentos/actualizar/'+idActual, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(a),
         }).then(res => res.json())
-        .then(result=>vaciarCampos())
+        .then(result=>window.location='medicamentos.html')
         .catch(err => alert(err))
     }
 })
@@ -198,20 +192,6 @@ function removeErrorFor(input){
     mensajeError1.className = 'mensaje-error';
     mensajeError1.textContent = 'Error message';
     formControl1.classList.remove('error');
-}
-
-function vaciarCampos(){
-    showAlert();
-    nombre.value = "";
-    tipo.value = "";
-    prcompra.value = "";
-    ganancia.value = "";
-    prventa.value = "";
-    aplicacion.value = "";
-    comp.value = "";
-    contenido.value = "";
-    clasif.checked = false;
-    rec.checked = false;
 }
 
 function showAlert() {
