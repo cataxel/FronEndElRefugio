@@ -21,6 +21,24 @@ $(document).ready(function() {
       });
   
       var tablaDatos = $('#example').DataTable();
+
+      $('#example tbody').on('click', '.eliminar', function() {
+        var fila = $(this).closest('tr');
+        tablaDatos.row(fila).remove().draw();
+      });
+
+      $('#ingresarMed').click(function() {
+        var idmedica = $('#form-control-idmed').val();
+        var nombremed = $('#form-control-med').val();
+        var cantidad = $('#form-control-cant').val();
+        var prec = $('#form-control-precio').val();
+        var caducidad = $('#form-control-caducidad').val();
+        var subtotal = cantidad*prec;
+        var remover = '<a href="#" class="eliminar">Eliminar</a>';        
+        tablaDatos.row.add([idmedica, nombremed, cantidad, prec, caducidad, subtotal, remover]).draw();
+      });
+
+      
     
     // Agrega un escucha de evento para hacer algo cuando se seleccione una fila
     $('#example tbody').on('click', 'tr', function() {

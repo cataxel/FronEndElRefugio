@@ -324,7 +324,7 @@
                                         <div class="row filas-form filas  d-flex justify-content-center align-items-center">
                                             <label for="form-control-empleado" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Empleado</label>
                                             <div class="col-sm-6">
-                                              <input type="text" class="form-control cdTexto" id="form-control-empleado" >
+                                              <input type="text" class="form-control cdTexto" id="form-control-empleado" disabled>
                                             </div>
                                             <button type="submit" class="card h-100 w-auto btn-mdt" style="background-color: #00A0F0;" 
                                             id="buscarEmpleado">
@@ -370,6 +370,7 @@
                                         <div class="row filas-form filas d-flex justify-content-center align-items-center">
                                             <div class="col-sm-6">
                                                 <input type="text" class="form-control " id="form-control-med">
+                                                <input type="text" class="form-control d-none" id="form-control-idmed">
                                             </div>
                                             <button type="submit" class="card h-100 w-auto btn-mdt" style="background-color: #00A0F0;" 
                                             id="buscarMed">
@@ -405,7 +406,7 @@
                                             </div>
                                         </div>
                                         <div class="row filas-form filas d-flex justify-content-center align-items-center h-25">
-                                            <button type="submit" class="card h-100 w-75 btn-mdt" style="background-color: #00A0F0;" 
+                                            <button type="button" class="card h-100 w-75 btn-mdt" style="background-color: #00A0F0;" 
                                             id="ingresarMed">
                                                 <div class="d-flex align-items-center justify-content-center">
                                                     <div class="row no-gutters align-items-center">
@@ -423,6 +424,7 @@
                                         <table id="example" style="width:100%" class="table table-striped table-bordered border-dark">
                                           <thead>
                                             <tr>
+                                              <th style="background-color: #00A0F0; color: white; border: black;">ID MED</th>
                                               <th style="background-color: #00A0F0; color: white; border: black;">MEDICAMENTO</th>
                                               <th style="background-color: #00A0F0; color: white; border: black;">CANTIDAD</th>
                                               <th style="background-color: #00A0F0; color: white; border: black;">PRECIO</th>
@@ -542,6 +544,7 @@
 
     <!-- Conexion bd-->
     <script src="js/conexionbd/compras/compras-tabla-añadir.js"></script>
+    <script src="js/conexionbd/compras/compras-añadir.js"></script>
 
      <!-- Required for table functionality -->
      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
