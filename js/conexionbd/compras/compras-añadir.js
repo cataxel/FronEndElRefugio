@@ -20,6 +20,13 @@ var ban = false;
 valueData();
 asignarEmpleado();
 
+$(document).ready(function() {
+    $('#buscarMed').click(function() {
+      $('#buscarMedModal').modal('show');
+    });
+});
+
+
 function valueData()
 {
     //antiguedad.value='2010-10-10'
@@ -30,7 +37,8 @@ function valueData()
     var day = String(fechaAc.getDate()).padStart(2, '0');
 
     var fechaActualFormateada = year + '-' + month + '-' + day;
-    fecha.value=fechaActualFormateada
+    fecha.value=fechaActualFormateada;
+    caducidad.value=fechaActualFormateada;
 }
 
 function asignarEmpleado(){

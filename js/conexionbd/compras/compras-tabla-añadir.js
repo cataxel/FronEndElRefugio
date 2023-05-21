@@ -36,6 +36,12 @@ $(document).ready(function() {
         var subtotal = cantidad*prec;
         var remover = '<a href="#" class="eliminar">Eliminar</a>';        
         tablaDatos.row.add([idmedica, nombremed, cantidad, prec, caducidad, subtotal, remover]).draw();
+
+        idmed.value = '';
+        med.value = '';
+        precio.value = ''
+        cant.value = '';
+        valueData();
       });
 
       

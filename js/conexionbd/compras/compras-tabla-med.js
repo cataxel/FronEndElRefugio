@@ -2,7 +2,7 @@ $(document).ready(function() {
     
     var filaSeleccionada = null;
     
-      $('#example').DataTable({
+      $('#tableMed').DataTable({
         select: {
           info : false
         },
@@ -25,17 +25,6 @@ $(document).ready(function() {
                 return formatoDinero
             }
           },
-          { data: 'Ganancia',
-            "defaultContent": "No definido"
-          },
-          { data: 'PrecioVenta',
-            "defaultContent": "No definido",
-            render: 
-              function (type) {
-                var formatoDinero = type.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
-                return formatoDinero
-            }
-          },
           { data: 'Aplicacion',
             "defaultContent": "No definido"
           },
@@ -44,20 +33,6 @@ $(document).ready(function() {
           },
           { data: 'Contenido',
             "defaultContent": "No definido"
-          },
-          { data: 'PatenteOGenerico',
-            "defaultContent": "No definido"
-          },
-          { data: 'RecetaNecesaria',
-            "defaultContent": "No definido",
-            render: function(type, row) {
-                if (type === true) {
-                    return 'Si';
-                } else if (type === false) {
-                    return 'No';
-                }
-                return type;
-            }
           },
         ],
         language: {
@@ -74,10 +49,10 @@ $(document).ready(function() {
          },
       });
   
-      var tablaDatos = $('#example').DataTable();
+      var tablaDatos = $('#tableMed').DataTable();
     
     // Agrega un escucha de evento para hacer algo cuando se seleccione una fila
-    $('#example tbody').on('click', 'tr', function() {
+    $('#tableMed tbody').on('click', 'tr', function() {
       // Obtén la fila seleccionada
       filaSeleccionada = tablaDatos.row(this).data();
       
@@ -86,31 +61,28 @@ $(document).ready(function() {
       console.log(filaSeleccionada._id);
     });
   
-    $('#example tbody').on('click', 'tr.selected', function() {
+    $('#tableMed tbody').on('click', 'tr.selected', function() {
       // If a row is deselected, set selectedRowData back to null
       if ($(this).hasClass('selected')) {
         filaSeleccionada = null;
       }
     });
   
-      var mod = document.querySelector('#modificar');
+      var mod = document.querySelector('#buscarMedContinuar');
       mod.addEventListener('click', ()=>{
         if(filaSeleccionada === null){
           alert('Debes seleccionar un elemento de la tabla primero para continuar con la operación');
         }else{
-          location.href='medicamentos-modificar.html?id='+filaSeleccionada._id
+          $(document).ready(function() {
+            $('#buscarMedContinuar').click(function() {
+              $('#buscarMedModal').modal('hide');
+            });
+          });
+          idmed.value = filaSeleccionada._id;
+          med.value = filaSeleccionada.nombreMedicamento;
+          precio.value = filaSeleccionada.PrecioCompra;
         }
       })
-
-      var mod = document.querySelector('#visualizar');
-      mod.addEventListener('click', ()=>{
-        if(filaSeleccionada === null){
-          alert('Debes seleccionar un elemento de la tabla primero para continuar con la operación');
-        }else{
-          location.href='medicamentos-visualizar.html?id='+filaSeleccionada._id
-        }
-      })
-      
     });
   
     window.addEventListener('DOMContentLoaded', () => {
@@ -123,7 +95,7 @@ $(document).ready(function() {
       .then(response => response.json())
       .then(data => {
         // Cargar los datos en DataTables
-        const tabla = $('#example').DataTable();
+        const tabla = $('#tableMed').DataTable();
         var filasSeleccionadas = tabla.rows('.selected').data();
         console.log(data);
         data.forEach(item => {
@@ -131,3 +103,6 @@ $(document).ready(function() {
         });
       });
     }
+
+    let buscarMedContinuar = document.getElementById('buscarMedModal');
+
