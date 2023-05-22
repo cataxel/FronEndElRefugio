@@ -54,9 +54,10 @@ function asignarEmpleado(){
 
 form.addEventListener('submit', (event)=>{
     event.preventDefault();
-    if(prov.value.trim()===''){
-        alert('Debes ingresar el proveedor');
-    }else if($('#example').DataTable().rows().count() > 0){
+    //if(prov.value.trim()===''){
+        //alert('Debes ingresar el proveedor');
+    //}else if($('#example').DataTable().rows().count() > 0){
+        if($('#example').DataTable().rows().count() > 0){
         form.addEventListener('submit', (event)=>{
             event.preventDefault();
             var tabla = document.getElementById('example'); // Obtener la referencia a la tabla por su ID
@@ -113,6 +114,8 @@ form.addEventListener('submit', (event)=>{
                                     //var filasSeleccionadas = tabla1.rows('.selected').data();
                                     console.log(data1[numlotes-1]._id)
                                     var loteid = data1[numlotes-1]._id;
+                                    arrayIDLotes.push(loteid)
+                                    console.log(arrayIDLotes);
                                     const a = {
                                         FechaCompra: fecha.value,
                                         TotalCompra: totale.value,
@@ -130,7 +133,6 @@ form.addEventListener('submit', (event)=>{
                                     .then(result=>console.log(result))
                                     .catch(err => alert(err))
                                     });
-                                    
                                 //}
                             }
                         });
