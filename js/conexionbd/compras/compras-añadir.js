@@ -1,9 +1,8 @@
 const form = document.getElementById('formulario');
 
-let total = document.getElementById('form-control-total');
-let tot = document.getElementById('form-control-tot');
 let empleado = document.getElementById('form-control-empleado');
 let prov = document.getElementById('form-control-prov');
+let idprov = document.getElementById('form-control-idprov');
 let fecha = document.getElementById('form-control-fecha');
 let med = document.getElementById('form-control-med');
 let idmed = document.getElementById('form-control-idmed');
@@ -14,16 +13,21 @@ let cant = document.getElementById('form-control-cant');
 let precio = document.getElementById('form-control-precio');
 let caducidad = document.getElementById('form-control-caducidad');
 let ingresarMed = document.getElementById('ingresarMed');
+let totale = document.getElementById('form-control-totale');
 
 var ban = false;
 
 valueData();
 asignarEmpleado();
+inicioTotal();
 
 $(document).ready(function() {
     $('#buscarMed').click(function() {
       $('#buscarMedModal').modal('show');
     });
+    $('#buscarProv').click(function() {
+        $('#buscarProvModal').modal('show');
+      });
 });
 
 
@@ -38,9 +42,41 @@ function valueData()
 
     var fechaActualFormateada = year + '-' + month + '-' + day;
     fecha.value=fechaActualFormateada;
-    caducidad.value=fechaActualFormateada;
+}
+
+function inicioTotal(){
+    totale.value = '0'
 }
 
 function asignarEmpleado(){
     empleado.value = JSON.parse(sessionStorage.getItem('nombre'));
 }
+
+form.addEventListener('submit', (event)=>{
+    event.preventDefault();
+    if(prov.value.trim()===''){
+        alert('Debes ingresar el proveedor');
+    }else if($('#example').DataTable().rows().count() > 0){
+        form.addEventListener('submit', (event)=>{
+            event.preventDefault();
+                const a = {
+                    FechaCompra: fecha.value,
+                    TotalCompra: totale.value,
+                  };
+                console.log(JSON.stringify(a));
+                fetch('https://backendelrefugio-production.up.railway.app/compras/nueva', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    //body: jsonData,
+                    body: JSON.stringify(a),
+                }).then(res => res.json())
+                .then(result=>console.log(result))
+                .catch(err => alert(err))
+        })
+    }else{
+        alert('Debes adquirir al menos un elemento');
+    }
+    
+})
