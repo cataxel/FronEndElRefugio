@@ -59,6 +59,7 @@ form.addEventListener('submit', (event)=>{
     }else if($('#example').DataTable().rows().count() > 0){
         form.addEventListener('submit', (event)=>{
             event.preventDefault();
+            console.log($('#example').DataTable().rows());
                 const a = {
                     FechaCompra: fecha.value,
                     TotalCompra: totale.value,

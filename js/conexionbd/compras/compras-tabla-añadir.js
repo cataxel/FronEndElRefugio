@@ -54,7 +54,7 @@ $(document).ready(function() {
           med.value = '';
           precio.value = ''
           cant.value = '';
-          valueData();
+          caducidad.value = '';
           var acumulado = 0;
           var datosFilas = tablaDatos.rows().data();
           datosFilas.each(function (fila) {
