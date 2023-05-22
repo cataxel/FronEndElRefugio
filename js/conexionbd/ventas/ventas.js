@@ -43,9 +43,19 @@ $(document).ready(function() {
           { data: 'MetodoPago',
             "defaultContent": "No definido"
           },
-          { data: 'Cabtidad Vendida',
+          { data: 'CantidadVendida',
             "defaultContent": "No definido"
           },
+          { data: 'Estatus',
+          render: function(type, row) {
+              if (type === true) {
+                return 'Activo';
+              } else if (type === false) {
+                return 'Inactivo';
+              }
+            return type;
+          }
+        },
         ],
         language: {
           "lengthMenu": "Mostrando _MENU_ registros por página",
@@ -92,11 +102,11 @@ $(document).ready(function() {
     });
   
     window.addEventListener('DOMContentLoaded', () => {
-      getProveedores();
+      getVentas();
     })
   
     // Obtener datos de la API utilizando fetch
-    const getProveedores = () => {
+    const getVentas = () => {
       fetch('https://backendelrefugio-production.up.railway.app/ventas/')
       .then(response => response.json())
       .then(data => {
