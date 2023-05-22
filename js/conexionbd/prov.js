@@ -109,7 +109,7 @@ $(document).ready(function() {
       // Cargar los datos en DataTables
       const tabla = $('#example').DataTable();
       var filasSeleccionadas = tabla.rows('.selected').data();
-      console.log(data);
+      console.log(data[1]);
       data.forEach(item => {
         tabla.row.add(item).draw();
       });
