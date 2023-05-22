@@ -111,29 +111,29 @@ form.addEventListener('submit', (event)=>{
                                     // Cargar los datos en DataTables
                                     //const tabla1 = $('#example').DataTable();
                                     //var filasSeleccionadas = tabla1.rows('.selected').data();
-                                    console.log(data1);
-                                    console.log(numlotes);
-                                    console.log(numlotesInc);
                                     console.log(data1[numlotes-1]._id)
+                                    var loteid = data1[numlotes-1]._id;
+                                    const a = {
+                                        FechaCompra: fecha.value,
+                                        TotalCompra: totale.value,
+                                        Lote: loteid
+                                    };
+                                    console.log(JSON.stringify(a));
+                                    fetch('https://backendelrefugio-production.up.railway.app/compras/nueva', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json'
+                                        },
+                                        //body: jsonData,
+                                        body: JSON.stringify(a),
+                                    }).then(res => res.json())
+                                    .then(result=>console.log(result))
+                                    .catch(err => alert(err))
                                     });
+                                    
                                 //}
                             }
-                        const a = {
-                            FechaCompra: fecha.value,
-                            TotalCompra: totale.value,
-                        };
-                        console.log(JSON.stringify(a));
-                        fetch('https://backendelrefugio-production.up.railway.app/compras/nueva', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            //body: jsonData,
-                            body: JSON.stringify(a),
-                        }).then(res => res.json())
-                        .then(result=>console.log(result))
-                        .catch(err => alert(err))
-                            });
+                        });
         })
     }else{
         alert('Debes adquirir al menos un elemento');
