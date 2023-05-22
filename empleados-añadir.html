@@ -294,65 +294,85 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
+                    <div id="alert-container"></div>
+
                     <!-- Page Heading -->
                     <div class="row d-flex align-items-center justify-content-between mb-0">
                         <div class="d-flex align-items-center justify-content-center mb-4">
                             <h3 class="ml-2" style="color: black;">Añadir empleado</h3>
                         </div>    
-                        <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
-                            <div class="mr-4">ID: </div>
-                            <input class="form-control mr-1" id="id-emp" type="text" style="border-color: black;" disabled>
-                        </div>    
+
                     </div>
 
                     <!-- Formulario -->
                     <div class="row d-block mt-3">
-                            <form class="user w-100 d-block justify-content-center align-items-center">
+                            <form class="user w-100 d-block justify-content-center align-items-center" id="formulario">
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
-                                        <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Nombre</label>
-                                        <div class="col-sm-8">
-                                          <input type="text" class="form-control" id="form-control-nombre" >
+                                        <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Nombre *</label>
+                                        <div class="col-sm-7">
+                                          <input type="text" class="form-control" id="form-control-nombre" name="nombreEmpleado">
+                                          <div class="mensaje-error">
+                                            Error
+                                          </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
-                                        <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Puesto</label>
-                                        <div class="col-sm-3">
-                                          <input type="text" class="form-control" id="form-control-puesto" >
+                                        <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Puesto *</label>
+                                        <div class="col-sm-7">
+                                          <input type="text" class="form-control" id="form-control-puesto" name="puestoEmpleado">
+                                          <div class="mensaje-error">
+                                            Error
+                                          </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
-                                        <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Sexo</label>
-                                        <div class="col-sm-3">
-                                          <input type="text" class="form-control" id="form-control-sexo" >
+                                        <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Sexo *</label>
+                                        <div class="col-sm-7">
+                                            <select class="form-control form-select" aria-label="Default select example" name="sexoEmpleado" id="form-control-sexo">
+                                                <option selected value="F">Femenino</option>
+                                                <option value="M">Masculino</option>
+                                            </select>
+                                          <div class="mensaje-error">
+                                            Error
+                                          </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
-                                        <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Edad</label>
-                                        <div class="col-sm-3">
-                                          <input type="number" class="form-control" id="form-control-edad" >
+                                        <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Edad *</label>
+                                        <div class="col-sm-7">
+                                          <input type="text" class="form-control" id="form-control-edad" name="edadEmpleado">
+                                          <div class="mensaje-error">
+                                            Error
+                                          </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
-                                        <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Antigüedad</label>
-                                        <div class="col-sm-2">
-                                          <input type="number" class="form-control" id="form-control-antigùedad" >
+                                        <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">F. de contratación</label>
+                                        <div class="col-sm-7">
+                                          <input type="date" class="form-control" id="form-control-antiguedad" name="AntiguedadEmpleado">
+                                          <div class="mensaje-error">
+                                            Error
+                                          </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
-                                        <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Teléfono</label>
-                                        <div class="col-sm-4">
-                                          <input type="tel" class="form-control" id="form-control-telefono" >
+                                        <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Teléfono *</label>
+                                        <div class="col-sm-7">
+                                          <input type="text" class="form-control" id="form-control-telefono" name="telefonoEmpleado">
+                                          <div class="mensaje-error">
+                                            Error
+                                          </div>
                                         </div>
                                     </div>
                                 </div>
@@ -441,6 +461,7 @@
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
     <script src="js/tablas.js"></script>
+    <script src="js/conexionbd/empleados/empleado-nuevo.js"></script>
 
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>

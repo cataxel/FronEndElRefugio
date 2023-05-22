@@ -9,10 +9,14 @@ $(document).ready(function() {
       },
       columns: [
         { data: '_id' },
-        { data: 'nombreProveedores' },
-        { data: 'telefonoProveedores' },
-        { data: 'LocalidadProveedores',
+        { data: 'nombreProveedores',
           "defaultContent": "No definido"
+        },
+        { data: 'telefonoProveedores',
+          "defaultContent": "No definido"
+        },
+        { data: 'LocalidadProveedores',
+          "defaultContent": "No definido",
         },
         { data: 'EstadoProveedores',
           "defaultContent": "No definido"
@@ -21,7 +25,23 @@ $(document).ready(function() {
           "defaultContent": "No definido"
         },
         { data: 'DireccionProveedores',
-          "defaultContent": "No definido"
+          "defaultContent": "No definido",
+          render: function(type, row) {
+            if (type === "") {
+                return 'N/A';
+            }
+            return type;
+          }
+        },
+        { data: 'Estatus',
+          render: function(type, row) {
+              if (type === true) {
+                return 'Activo';
+              } else if (type === false) {
+                return 'Inactivo';
+              }
+            return type;
+          }
         },
       ],
       language: {
@@ -65,6 +85,15 @@ $(document).ready(function() {
         location.href='proveedores-modifica.html?id='+filaSeleccionada._id
       }
     })
+
+    var visual = document.querySelector('#visualizar');
+    visual.addEventListener('click', ()=>{
+      if(filaSeleccionada === null){
+        alert('Debes seleccionar un elemento de la tabla primero para continuar con la operación');
+      }else{
+        location.href='proveedores-visualizar.html?id='+filaSeleccionada._id
+      }
+    })
     
   });
 
@@ -80,7 +109,7 @@ $(document).ready(function() {
       // Cargar los datos en DataTables
       const tabla = $('#example').DataTable();
       var filasSeleccionadas = tabla.rows('.selected').data();
-      console.log(data);
+      console.log(data[1]);
       data.forEach(item => {
         tabla.row.add(item).draw();
       });

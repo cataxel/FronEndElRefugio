@@ -1,12 +1,12 @@
 const form = document.getElementById('formulario');
 
-let idprov = document.querySelector('#id-emp');
+let idemp = document.querySelector('#id-emp');
 let nombre = document.querySelector('#form-control-nombre');
 let direccion = document.querySelector('#form-control-direccion');
 let estado = document.querySelector('#form-control-estado');
 let localidad = document.querySelector('#form-control-localidad');
 let codpost = document.querySelector('#form-control-codpost');
-let telefono = document.querySelector('#form-control-telefono');
+let email = document.querySelector('#form-control-email');
 let estatus = document.querySelector('#btn-toggle');
 
 var telregex1 = /^\d{3}-\d{3}-\d{4}$/;
@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Obtener datos de la API utilizando fetch
   const getinfo = () => {
-    fetch('https://backendelrefugio-production.up.railway.app/proveedor/?id=${idActual}')
+    fetch('https://backendelrefugio-production.up.railway.app/laboratorios/?id=${idActual}')
     .then(response1 => response1.json())
     .then(data1 => {
       var index;
@@ -33,24 +33,24 @@ window.addEventListener('DOMContentLoaded', () => {
             break
         }
       }
-      idprov.value = data1[index]._id;
-      nombre.value = data1[index].nombreProveedores;
+      idemp.value = data1[index]._id;
+      nombre.value = data1[index].Nombre;
       //direccion.value = data1[index].DireccionProveedores;
-      if(!(data1[index].DireccionProveedores===undefined)){
-        direccion.value = data1[index].DireccionProveedores;
+      if(!(data1[index].Direccion===undefined)){
+        direccion.value = data1[index].Direccion;
       }
       //estado.value = data1[index].EstadoProveedores;
-      if(!(data1[index].EstadoProveedores===undefined)){
-        estado.value = data1[index].EstadoProveedores;
+      if(!(data1[index].Estado===undefined)){
+        estado.value = data1[index].Estado;
       }
-      if(!(data1[index].LocalidadProveedores===undefined)){
-        localidad.value = data1[index].LocalidadProveedores;
+      if(!(data1[index].CP===undefined)){
+        codpost.value = data1[index].CP;
       }
       //codpost.value = data1[index].CPProveedores;
-      if(!(data1[index].CPProveedores===undefined)){
-        codpost.value = data1[index].CPProveedores;
+      if(!(data1[index].Localidad===undefined)){
+        localidad.value = data1[index].Localidad;
       }
-      telefono.value = data1[index].telefonoProveedores;
+      email.value = data1[index].Email;
       var toggleButton = $('#btn-toggle');
       if(data1[index].Estatus===true){
         toggleButton.prop('checked', true);
@@ -69,17 +69,17 @@ form.addEventListener('submit', (event)=>{
     console.log(estat)
     if(ban==true){
         const a = {
-            nombreProveedores: nombre.value,
-            telefonoProveedores: telefono.value,
-            LocalidadProveedores: localidad.value,
-            EstadoProveedores: estado.value,
-            CPProveedores: codpost.value,
-            DireccionProveedores: direccion.value,
+            Nombre: nombre.value,
+            Direccion: direccion.value,
+            Estado: estado.value,
+            CP: codpost.value,
+            Localidad: localidad.value,
+            Email: email.value,
             Estatus: estat,
           };
           console.log(a);
           console.log(JSON.stringify(a))
-        fetch('https://backendelrefugio-production.up.railway.app/proveedor/actualizar/'+idActual, {
+        fetch('https://backendelrefugio-production.up.railway.app/laboratorios/actualizar/'+idActual, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -97,68 +97,57 @@ function validarcampos()
     ban = false;
     var cont = 0;
     if(nombre.value.trim() === ''){
-        setErrorFor(nombre, 'Debes ingresar el nombre del proveedor.');
-    }else if(!validarNombre(nombre.value.trim())){
-        setErrorFor(nombre, 'Ingresaste caracteres incorrectos');
+        setErrorFor(nombre, 'Debes ingresar el nombre del laboratorio.');
     }else{        
         cont += 1;
     }
 
-    if(localidad.value.trim() === ''){
-        setErrorFor(localidad, 'Debes ingresar la localidad del proveedor.');
+    if(direccion.value.trim() === ''){
+        setErrorFor(direccion, 'Debes ingresar la dirección del laboratorio.');
     }else{        
         cont += 1;
     }
 
     if(estado.value.trim() === ''){
-        setErrorFor(estado, 'Debes ingresar el estado del proveedor.');
+        setErrorFor(estado, 'Debes ingresar el estado donde se encuentra localizado el laboratorio.');
+    }else{        
+        cont += 1;
+    }
+
+    if(localidad.value.trim() === ''){
+        setErrorFor(localidad, 'Debes ingresar la localidad donde del laboratorio.');
     }else{        
         cont += 1;
     }
 
     if(codpost.value.trim() === ''){
-        setErrorFor(codpost, 'Debes ingresar el codigo postal del proveedor.');
+        setErrorFor(codpost, 'Debes ingresar el codigo postal del laboratorio.');
     }else{        
         cont += 1;
     }
 
-    if(telefono.value.trim() === ''){
-        setErrorFor(telefono, 'Debes ingresar el telefono del proveedor.');
-    }else if(!validarTelefono(telefono.value.trim())){
-        setErrorFor(telefono, 'Ingresaste un numero de telefono invalido');
+    if(email.value === ''){
+        cont += 1;
+    }else if(!validarEmail(email.value.trim())){
+        setErrorFor(email, 'Ingresaste un correo electronico inválido');
     }else{        
         cont += 1;
     }
 
-    if(cont==5){
+    if(cont==6){
         ban=true;
     }
 }
 
-  function validarTelefono(telefono){
-    var patron1 = /^\d{10}$/;
-    var patron2 = /^\d{3}\s\d{3}\s\d{4}$/;
-    var patron3 = /^\d{3}-\d{3}-\d{4}$/;
-    if(patron1.test(telefono)){
+  function validarEmail(email){
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (emailRegex.test(email)) {
         return true;
-    }else if(patron2.test(telefono)){
-        return true;
-    }else if(patron3.test(telefono)){
-        return true;
-    }else{
+    } else {
         return false;
     }
 }
-
-function validarNombre(nombre){
-    var patronNombre = /^[A-ZÑa-zñáéíóúÁÉÍÓÚ'° ]{1,40}$/;
-    if(patronNombre.test(nombre)){
-        return true;
-    }else{
-        return false;
-    }
-}
-
+  
 function setErrorFor(input, message){
     const formControl = input.parentElement;
     const celda = formControl.querySelector('input');
@@ -208,7 +197,7 @@ function showAlert() {
 
     // Add the alert message
     var message = document.createElement('span');
-    message.textContent = 'Proveedor modificado con éxito';
+    message.textContent = 'Laboratorio modificado con éxito';
 
     alertDiv.appendChild(message);
 

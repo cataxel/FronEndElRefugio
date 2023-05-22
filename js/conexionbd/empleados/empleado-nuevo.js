@@ -1,11 +1,10 @@
-
 const form = document.getElementById('formulario');
 
 let nombre = document.querySelector('#form-control-nombre');
-let direccion = document.querySelector('#form-control-direccion');
-let estado = document.querySelector('#form-control-estado');
-let localidad = document.querySelector('#form-control-localidad');
-let codpost = document.querySelector('#form-control-codpost');
+let puesto = document.querySelector('#form-control-puesto');
+let sexo = document.querySelector('#form-control-sexo');
+let edad = document.querySelector('#form-control-edad');
+let antiguedad = document.querySelector('#form-control-antiguedad');
 let telefono = document.querySelector('#form-control-telefono');
 
 var telregex1 = /^\d{3}-\d{3}-\d{4}$/;
@@ -13,22 +12,44 @@ var telregex2 = /^\d{10}$/;
 
 var ban = false;
 
+valueData();
+
+function valueData()
+{
+    //antiguedad.value='2010-10-10'
+    var fechaAc = new Date();
+
+    var year = fechaAc.getFullYear();
+    var month = String(fechaAc.getMonth() + 1).padStart(2, '0');
+    var day = String(fechaAc.getDate()).padStart(2, '0');
+
+    var fechaActualFormateada = year + '-' + month + '-' + day;
+    antiguedad.value=fechaActualFormateada
+}
+
 form.addEventListener('submit', (event)=>{
     event.preventDefault();
     validarcampos();
     if(ban==true){
-        let formData = new FormData(form);
-
-        let data = Object.fromEntries(formData);
-        let jsonData = JSON.stringify(data);
-        console.log(jsonData)
-
-        fetch('https://backendelrefugio-production.up.railway.app/proveedor/nuevo', {
+        var dateValue = antiguedad.value;
+        var date = new Date(dateValue);
+        var dateISOString = date.toISOString();
+        const a = {
+            nombreEmpleado: nombre.value,
+            telefonoEmpleado: telefono.value,
+            puestoEmpleado: puesto.value,
+            edadEmpleado: edad.value,
+            sexoEmpleado: sexo.value,
+            AntiguedadEmpleado: dateISOString,
+          };
+        console.log(JSON.stringify(a));
+        fetch('https://backendelrefugio-production.up.railway.app/users/nuevo', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: jsonData,
+            //body: jsonData,
+            body: JSON.stringify(a),
         }).then(res => res.json())
         .then(result=>vaciarCampos())
         .catch(err => alert(err))
@@ -38,37 +59,63 @@ form.addEventListener('submit', (event)=>{
 function validarcampos()
 {
     ban = false;
+    console.log(antiguedad.value);
     var cont = 0;
     if(nombre.value.trim() === ''){
-        setErrorFor(nombre, 'Debes ingresar el nombre del proveedor.');
+        setErrorFor(nombre, 'Debes ingresar el nombre del empleado.');
     }else if(!validarNombre(nombre.value.trim())){
-        setErrorFor(nombre, 'Ingresaste caracteres incorrectos');
+        setErrorFor(nombre, 'Ingresaste caractéres incorrectos');
     }else{        
         cont += 1;
     }
 
-    if(localidad.value.trim() === ''){
-        setErrorFor(localidad, 'Debes ingresar la localidad del proveedor.');
+    if(puesto.value.trim() === ''){
+        setErrorFor(puesto, 'Debes ingresar el puesto del empleado.');
     }else{        
         cont += 1;
     }
 
-    if(estado.value.trim() === ''){
-        setErrorFor(estado, 'Debes ingresar el estado del proveedor.');
-    }else{        
+    if(edad.value.trim() === ''){
+        setErrorFor(edad, 'Debes ingresar la edad del empleado.');
+    }else if(edad.value.trim()<18 && edad.value.trim()>65){        
+        setErrorFor(edad, 'Debes poner una edad válida.');
+    }else{
         cont += 1;
     }
 
-    if(codpost.value.trim() === ''){
-        setErrorFor(codpost, 'Debes ingresar el codigo postal del proveedor.');
-    }else{        
-        cont += 1;
+    var fechaInput = document.getElementById('form-control-antiguedad').value;
+    // Expresión regular para validar el formato YYYY-MM-DD y aceptar años a partir de 2000
+    //var regexFecha = /^\d{4}-\d{2}-\d{2}$/;
+    var regexFecha = /^(20\d{2})-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
+
+    if (regexFecha.test(fechaInput)) {
+    var fechaIngresada = new Date(fechaInput);
+    var fechaActual = new Date();
+    // Verifica si el objeto Date es válido, coincide con la fecha ingresada, el año es a partir de 2000
+    // y no supera la fecha actual
+    if (
+        fechaIngresada instanceof Date &&
+        !isNaN(fechaIngresada) &&
+        fechaIngresada.toISOString().split('T')[0] === fechaInput &&
+        fechaIngresada.getFullYear() >= 2000 
+    ) {
+        if(fechaIngresada <= fechaActual){
+            cont += 1;
+        }else{
+            setErrorFor(antiguedad, 'La fecha no puede sobrepasar el dia de hoy');
+        }
+    } else {
+        setErrorFor(antiguedad, 'La fecha ingresada no es válida');
     }
+    } else {
+        setErrorFor(antiguedad, 'El formato de fecha ingresado no es válido o el año no es a partir de 2000');
+    }
+
 
     if(telefono.value.trim() === ''){
-        setErrorFor(telefono, 'Debes ingresar el telefono del proveedor.');
+        setErrorFor(telefono, 'Debes ingresar el telefono del empleado.');
     }else if(!validarTelefono(telefono.value.trim())){
-        setErrorFor(telefono, 'Ingresaste un numero de telefono invalido');
+        setErrorFor(telefono, 'Ingresaste un numero de telefono inválido');
     }else{        
         cont += 1;
     }
@@ -82,11 +129,7 @@ function validarcampos()
     var patron1 = /^\d{10}$/;
     var patron2 = /^\d{3}\s\d{3}\s\d{4}$/;
     var patron3 = /^\d{3}-\d{3}-\d{4}$/;
-    if(patron1.test(telefono)){
-        return true;
-    }else if(patron2.test(telefono)){
-        return true;
-    }else if(patron3.test(telefono)){
+    if(patron1.test(telefono) || patron2.test(telefono) || patron3.test(telefono)){
         return true;
     }else{
         return false;
@@ -112,6 +155,14 @@ function setErrorFor(input, message){
     mensajeError.innerText = message;
 }
 
+function setErrorFor2(select, message){
+    const formControl = select.parentElement;
+    formControl.classList.add('error');
+    const mensajeError = formControl.querySelector('.mensaje-error');
+    mensajeError.className = 'mensaje-error error';
+    mensajeError.innerText = message;
+}
+
 function removeErrorFor(input){
     const formControl1 = input.parentElement;
     const celda = formControl1.querySelector('input');
@@ -124,10 +175,9 @@ function removeErrorFor(input){
 function vaciarCampos(){
     showAlert();
     nombre.value = "";
-    direccion.value = ""; 
-    estado.value = ""; 
-    localidad.value = ""; 
-    codpost.value = ""; 
+    puesto.value = ""; 
+    edad.value = ""; 
+    valueData();
     telefono.value = ""; 
 }
 
@@ -159,13 +209,14 @@ function showAlert() {
 
     // Add the alert message
     var message = document.createElement('span');
-    message.textContent = 'Proveedor registrado con éxito';
+    message.textContent = 'Empleado registrado con éxito';
 
     alertDiv.appendChild(message);
 
     // Add the alert to the document
     container.appendChild(alertDiv);
 }
+
 
 document.getElementById('formulario').addEventListener('focusin', (event) => {
     /* event.target.value = ''; */

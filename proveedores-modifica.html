@@ -297,6 +297,8 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
+                    <div id="alert-container"></div>
+
                     <!-- Page Heading -->
                     <div class="row d-flex align-items-center justify-content-between mb-0">
                         <div class="d-flex align-items-center justify-content-center mb-4">
@@ -304,89 +306,89 @@
                         </div>    
                         <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
                             <div class="mr-4">ID: </div>
-                            <input class="form-control mr-1" id="id-emp" type="text" style="border-color: black;" disabled>
+                            <input class="form-control mr-5 col-sm-10" id="id-emp" type="text" style="border-color: black;" disabled>
                         </div>    
                     </div>
 
                     <!-- Formulario -->
                     <div class="row d-block mt-3">
-                            <form class="user w-100 d-block justify-content-center align-items-center" id="formulario">
+                        <form class="user w-100 d-block justify-content-center align-items-center" id="formulario">
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
-                                        <label for="form-control-nombre" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Nombre</label>
-                                        <div class="col-sm-7">
-                                          <input type="text" class="form-control" id="form-control-nombre" >
+                                        <label for="form-control-nombre" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Nombre *</label>
+                                        <div class="col-sm-7 campos">
+                                          <input type="text" class="form-control" id="form-control-nombre" name='"nombreProveedores"'>
                                           <div class="mensaje-error">
                                             Error
                                           </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-group ml-3">
+                                    <div class="row filas-form">
+                                        <label for="form-control-telefono" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Teléfono *</label>
+                                        <div class="col-sm-7 campos">
+                                          <input type="text" class="form-control" id="form-control-telefono" name="telefonoProveedores">
+                                          <div class="mensaje-error">
+                                            Error
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group ml-3">
+                                    <div class="row filas-form">
+                                        <label for="form-control-localidad" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Localidad *</label>
+                                        <div class="col-sm-7 campos">
+                                          <input type="text" class="form-control" id="form-control-localidad" name="LocalidadProveedores">
+                                          <div class="mensaje-error">
+                                            Error
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group ml-3">
+                                    <div class="row filas-form">
+                                        <label for="form-control-estado" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Estado *</label>
+                                        <div class="col-sm-7 campos">
+                                          <input type="text" class="form-control" id="form-control-estado" name="EstadoProveedores">
+                                          <div class="mensaje-error">
+                                            Error
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group ml-3">
+                                    <div class="row filas-form">
+                                        <label for="form-control-codpost" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Codigo Postal *</label>
+                                        <div class="col-sm-7 campos">
+                                          <input type="text" class="form-control" id="form-control-codpost" name="CPProveedores">
+                                          <div class="mensaje-error">
+                                            Error
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
                                         <label for="form-control-direccion" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Dirección</label>
-                                        <div class="col-sm-7">
-                                          <input type="text" class="form-control" id="form-control-direccion" >
+                                        <div class="col-sm-7 campos">
+                                          <input type="text" class="form-control" id="form-control-direccion" name="DireccionProveedores">
                                           <div class="mensaje-error">
                                             Error
                                           </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>                                   
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
-                                        <label for="form-control-estado" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Estado</label>
-                                        <div class="col-sm-7">
-                                          <input type="text" class="form-control" id="form-control-estado" >
-                                          <div class="mensaje-error">
-                                            Error
-                                          </div>
+                                        <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Estatus</label>
+                                        <div class="col-sm-7 campos">
+                                            <input type="checkbox" id="btn-toggle" data-toggle="toggle" data-on="Activado" data-off="Desactivado" data-onstyle="primary" 
+                                            data-offstyle="dark" data-size="medium" name="Estatus" class="form-control">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-group ml-3">
-                                    <div class="row filas-form">
-                                        <label for="form-control-localidad" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Localidad</label>
-                                        <div class="col-sm-7">
-                                          <input type="text" class="form-control" id="form-control-localidad" >
-                                          <div class="mensaje-error">
-                                            Error
-                                          </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group ml-3">
-                                    <div class="row filas-form">
-                                        <label for="form-control-codpost" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Codigo Postal</label>
-                                        <div class="col-sm-7">
-                                          <input type="number" class="form-control" id="form-control-codpost" >
-                                          <div class="mensaje-error">
-                                            Error
-                                          </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group ml-3">
-                                    <div class="row filas-form">
-                                        <label for="form-control-telefono" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Teléfono</label>
-                                        <div class="col-sm-7">
-                                          <input type="tel" class="form-control" id="form-control-telefono" >
-                                          <div class="mensaje-error">
-                                            Error
-                                          </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row filas-form">
-                                        <div class="toggleActivo">
-                                            <div class="col-sm-7 ">
-                                                <input type="checkbox" id="btn-toggle" checked data-toggle="toggle" data-on="Activado" data-off="Desactivado" data-onstyle="primary" 
-                                                data-offstyle="dark" data-size="medium">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>                                
+                                </div>                            
                                  
                                 <!-- Botones -->
                                 <div class="ml-auto w-50 d-flex justify-content-end gpo-btn-edit">
@@ -395,7 +397,7 @@
                                             <div class="card-body d-flex align-items-center justify-content-center">
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col">
-                                                        <p class="h5 mb-0 font-weight-bold" style="color: white;">Cancelar</p>
+                                                        <p class="h5 mb-0 font-weight-bold" style="color: white;">Regresar</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -413,8 +415,8 @@
                                         </button>
                                     </div>  
                                 </div>
-                            </form>
-                    </div>                           
+                            </form>    
+                    </div>   
                 </div>
                 <!-- /.container-fluid -->
 
@@ -473,7 +475,6 @@
     <script src="js/sb-admin-2.min.js"></script>
     <script src="js/tablas.js"></script>
     <script src="js/conexionbd/prov-modificar.js"></script>
-
 
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
