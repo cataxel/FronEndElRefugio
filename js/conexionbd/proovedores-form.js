@@ -18,9 +18,11 @@ form.addEventListener('submit', (event)=>{
     validarcampos();
     if(ban==true){
         let formData = new FormData(form);
+
         let data = Object.fromEntries(formData);
         let jsonData = JSON.stringify(data);
         console.log(jsonData)
+
         fetch('https://backendelrefugio-production.up.railway.app/proveedor/nuevo', {
             method: 'POST',
             mode: 'cors',
