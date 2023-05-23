@@ -43,7 +43,7 @@ form.addEventListener('submit', (event)=>{
             AntiguedadEmpleado: dateISOString,
           };
         console.log(JSON.stringify(a));
-        fetch('https://backendelrefugio-production.up.railway.app/users/nuevo', {
+        fetch('https://farmaexpress.azurewebsites.net/users/nuevo', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

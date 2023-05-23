@@ -32,7 +32,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Obtener datos de la API utilizando fetch
   const getinfo = () => {
-    fetch('https://backendelrefugio-production.up.railway.app/medicamentos/?id=${idActual}')
+    fetch('https://farmaexpress.azurewebsites.net/medicamentos/?id=${idActual}')
     .then(response1 => response1.json())
     .then(data1 => {
       var index;
@@ -110,7 +110,7 @@ form.addEventListener('submit', (event)=>{
             PatenteOGenerico: clfinal,
         };
         console.log(JSON.stringify(a));
-        fetch('https://backendelrefugio-production.up.railway.app/medicamentos/actualizar/'+idActual, {
+        fetch('https://farmaexpress.azurewebsites.net/medicamentos/actualizar/'+idActual, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

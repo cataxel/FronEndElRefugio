@@ -62,7 +62,7 @@ form.addEventListener('submit', (event)=>{
             event.preventDefault();
             var tabla = document.getElementById('example'); // Obtener la referencia a la tabla por su ID
                     var recorrido = 0
-                    fetch('https://backendelrefugio-production.up.railway.app/lotes/')
+                    fetch('https://farmaexpress.azurewebsites.net/lotes/')
                         .then(response => response.json())
                         .then(data => {
                           console.log(data.length);
@@ -96,7 +96,7 @@ form.addEventListener('submit', (event)=>{
                                         ExistenciasComprada: valor2cantidad,
                                         FechaCaducidad: valor4fechacad
                                     };
-                                    fetch('https://backendelrefugio-production.up.railway.app/lotes/nuevo', {
+                                    fetch('https://farmaexpress.azurewebsites.net/lotes/nuevo', {
                                         method: 'POST',
                                         headers: {
                                             'Content-Type': 'application/json'
@@ -106,7 +106,7 @@ form.addEventListener('submit', (event)=>{
                                     .then(result=>console.log(result))
                                     .catch(err => alert(err))
                                     numlotesInc += 1;
-                                    fetch('https://backendelrefugio-production.up.railway.app/lotes/')
+                                    fetch('https://farmaexpress.azurewebsites.netp/lotes/')
                                     .then(response1 => response1.json())
                                     .then(data1 => {
                                     // Cargar los datos en DataTables
@@ -122,7 +122,7 @@ form.addEventListener('submit', (event)=>{
                                         Lote: loteid
                                     };
                                     console.log(JSON.stringify(a));
-                                    fetch('https://backendelrefugio-production.up.railway.app/compras/nueva', {
+                                    fetch('https://farmaexpress.azurewebsites.net/compras/nueva', {
                                         method: 'POST',
                                         headers: {
                                             'Content-Type': 'application/json'

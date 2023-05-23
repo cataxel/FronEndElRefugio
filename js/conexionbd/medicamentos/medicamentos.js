@@ -119,7 +119,7 @@ $(document).ready(function() {
   
     // Obtener datos de la API utilizando fetch
     const getMedicamentos = () => {
-      fetch('https://backendelrefugio-production.up.railway.app/medicamentos/')
+      fetch('https://farmaexpress.azurewebsites.net/medicamentos/')
       .then(response => response.json())
       .then(data => {
         // Cargar los datos en DataTables

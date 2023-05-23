@@ -50,7 +50,7 @@ form.addEventListener('submit', (event)=>{
 
         };
         console.log(JSON.stringify(a));
-        fetch('https://backendelrefugio-production.up.railway.app/medicamentos/nuevo', {
+        fetch('https://farmaexpress.azurewebsites.net/medicamentos/nuevo', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

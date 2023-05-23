@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Obtener datos de la API utilizando fetch
   const getinfo = () => {
-    fetch('https://backendelrefugio-production.up.railway.app/proveedor/?id=${idActual}')
+    fetch('https://farmaexpress.azurewebsites.net/proveedor/?id=${idActual}')
     .then(response1 => response1.json())
     .then(data1 => {
       var index;
@@ -79,7 +79,7 @@ form.addEventListener('submit', (event)=>{
           };
           console.log(a);
           console.log(JSON.stringify(a))
-        fetch('https://backendelrefugio-production.up.railway.app/proveedor/actualizar/'+idActual, {
+        fetch('https://farmaexpress.azurewebsites.net/proveedor/actualizar/'+idActual, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

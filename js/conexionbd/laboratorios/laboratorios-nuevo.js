@@ -17,7 +17,7 @@ form.addEventListener('submit', (event)=>{
         let data = Object.fromEntries(formData);
         let jsonData = JSON.stringify(data);
         console.log(jsonData)
-        fetch('https://backendelrefugio-production.up.railway.app/laboratorios/nuevo', {
+        fetch('https://farmaexpress.azurewebsites.net/laboratorios/nuevo', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

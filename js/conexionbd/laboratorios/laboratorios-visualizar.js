@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Obtener datos de la API utilizando fetch
   const getinfo = () => {
-    fetch('https://backendelrefugio-production.up.railway.app/laboratorios/?id=${idActual}')
+    fetch('https://farmaexpress.azurewebsites.net/laboratorios/?id=${idActual}')
     .then(response1 => response1.json())
     .then(data1 => {
       var index;

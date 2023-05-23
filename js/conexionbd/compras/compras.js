@@ -83,7 +83,7 @@ $(document).ready(function() {
   
     // Obtener datos de la API utilizando fetch
     const getProveedores = () => {
-      fetch('https://backendelrefugio-production.up.railway.app/compras/')
+      fetch('https://farmaexpress.azurewebsites.net/compras/')
       .then(response => response.json())
       .then(data => {
         // Cargar los datos en DataTables

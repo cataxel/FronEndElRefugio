@@ -105,7 +105,7 @@ $(document).ready(function() {
   
     // Obtener datos de la API utilizando fetch
     const getLabs = () => {
-      fetch('https://backendelrefugio-production.up.railway.app/laboratorios/')
+      fetch('https://farmaexpress.azurewebsites.net/laboratorios/')
       .then(response => response.json())
       .then(data => {
         // Cargar los datos en DataTables
