@@ -41,16 +41,16 @@ $(document).ready(function() {
       $('#ingresarMed').click(function() {
         validarcampos();
         if(ban === true){
-          var idmedica = $('#form-control-idmed').val();
+          //var idmedica = $('#form-control-idmed').val();
           var nombremed = $('#form-control-med').val();
           var cantidad = $('#form-control-cant').val();
           var prec = $('#form-control-precio').val();
           var caducidad = $('#form-control-caducidad').val();
           var subtotal = cantidad*prec;
           var remover = '<a href="#" class="eliminar">Eliminar</a>';        
-          tablaDatos.row.add([idmedica, nombremed, cantidad, prec, caducidad, subtotal, remover]).draw();
+          tablaDatos.row.add([nombremed, cantidad, prec, caducidad, subtotal, remover]).draw();
 
-          idmed.value = '';
+          //idmed.value = '';
           med.value = '';
           precio.value = ''
           cant.value = '';
@@ -59,11 +59,11 @@ $(document).ready(function() {
           var datosFilas = tablaDatos.rows().data();
           datosFilas.each(function (fila) {
             console.log(fila);
-            var subtot = parseFloat(fila[5]);
+            var subtot = parseFloat(fila[4]);
             acumulado = acumulado+subtot;     
           });
           var prevTotale = parseFloat(acumulado);
-          totale.value = prevTotale;
+          totale.value = parseFloat(prevTotale);
         }
       });
 

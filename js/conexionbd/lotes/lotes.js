@@ -9,7 +9,7 @@ $(document).ready(function() {
         },
         columns: [
           { data: '_id' },
-          { data: 'nombreMed',
+          { data: 'Medicamento',
             "defaultContent": "No definido"
           },
           { data: 'ExistenciasFisica',
