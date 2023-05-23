@@ -46,16 +46,6 @@ $(document).ready(function() {
           { data: 'CantidadVendida',
             "defaultContent": "No definido"
           },
-          { data: 'Estatus',
-          render: function(type, row) {
-              if (type === true) {
-                return 'Activo';
-              } else if (type === false) {
-                return 'Inactivo';
-              }
-            return type;
-          }
-        },
         ],
         language: {
           "lengthMenu": "Mostrando _MENU_ registros por página",
@@ -95,7 +85,7 @@ $(document).ready(function() {
         if(filaSeleccionada === null){
           alert('Debes seleccionar un elemento de la tabla primero para continuar con la operación');
         }else{
-          location.href='compras-consultar.html?id='+filaSeleccionada._id
+          location.href='ventas-visualizar.html?id='+filaSeleccionada._id
         }
       });
       
