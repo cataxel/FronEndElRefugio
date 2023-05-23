@@ -19,9 +19,13 @@
         rel="stylesheet">
 
      <!-- Requeridos para que las tablas funiconen -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+     <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.css" rel="stylesheet"/>
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
 
 
     <!-- Custom styles for this template-->
@@ -301,8 +305,8 @@
                         </div>    
                         <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
                             <div class="mr-4">ID: </div>
-                            <input class="form-control mr-1" id="id-emp" type="text" style="border-color: black;" disabled>
-                        </div>    
+                            <input class="form-control mr-5 col-sm-10" id="id-emp" type="text" style="border-color: black;" disabled>
+                        </div>   
                     </div>
 
                     <!-- Formulario -->
@@ -311,7 +315,7 @@
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
                                         <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Iva</label>
-                                        <div class="col-sm-7">
+                                        <div class="col-sm-8">
                                           <input type="text" class="form-control" id="form-control-iva" disabled>
                                         </div>
                                     </div>
@@ -319,7 +323,7 @@
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
                                         <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Subtotal</label>
-                                        <div class="col-sm-7">
+                                        <div class="col-sm-8">
                                           <input type="text" class="form-control" id="form-control-subtotal" disabled>
                                         </div>
                                     </div>
@@ -327,7 +331,7 @@
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
                                         <label for="form-control-fecha" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Fecha Venta</label>
-                                        <div class="col-sm-7">
+                                        <div class="col-sm-8">
                                           <input type="date" class="form-control" id="form-control-fecha" disabled>
                                         </div>
                                     </div>
@@ -335,7 +339,7 @@
                                 <div class="form-group ml-3">
                                     <div class="row filas-form">
                                         <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Método de pago</label>
-                                        <div class="col-sm-7">
+                                        <div class="col-sm-8">
                                             <select class="form-control form-select" aria-label="Default select example" name="MetodoPago" id="form-control-metodo" disabled>
                                                 <option selected value="Efectivo">Efectivo</option>
                                                 <option value="Tarjeta">Tarjeta</option>
@@ -366,16 +370,16 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="d-block align-items-center campos-cuadro">
+                                    <div class="d-block align-items-center campos-cuadro mr-2">
                                         <div class="row filas-form filas">
                                             <label for="form-control-cant" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Cantidad</label>
-                                            <div class="col-sm-7">
+                                            <div class="col-sm-8">
                                               <input type="number" class="form-control cdTexto" id="form-control-cant" disabled>
                                             </div>
                                         </div>
                                         <div class="row filas-form filas">
                                             <label for="form-control-precio" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Precio</label>
-                                            <div class="col-sm-7">
+                                            <div class="col-sm-8">
                                               <input type="number" step="any" class="form-control cdTexto" id="form-control-precio" disabled>
                                             </div>
                                         </div>
@@ -383,13 +387,13 @@
                                     <div class="d-block align-items-center campos-cuadro">
                                         <div class="row filas-form filas">
                                             <label for="form-control-caducidad" style="color: black;" class="col-sm-2 mr-3 col-form-label d-flex justify-content-center textoIndicativo">Caducidad</label>
-                                            <div class="col-sm-7">
+                                            <div class="col-sm-9">
                                               <input type="date" class="form-control cdTexto" id="form-control-caducidad" disabled>
                                             </div>
                                         </div>
                                         <div class="row filas-form filas">
                                             <label for="form-control-lote" style="color: black;" class="col-sm-2 mr-3 col-form-label d-flex justify-content-center textoIndicativo">Lote</label>
-                                            <div class="col-sm-7">
+                                            <div class="col-sm-9">
                                               <input type="text" step="any" class="form-control cdTexto" id="form-control-lote" disabled>
                                             </div>
                                         </div>
@@ -403,7 +407,7 @@
                                             <div class="card-body d-flex align-items-center justify-content-center">
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col">
-                                                        <p class="h5 mb-0 font-weight-bold" style="color: white;">Cancelar</p>
+                                                        <p class="h5 mb-0 font-weight-bold" style="color: white;">Regresar</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -459,26 +463,6 @@
         </div>
     </div>
 
-    <div class="modal-body">
-        <div class="table-responsive">
-            <table id="tableMed" style="width:100%" class="table table-striped table-bordered border-dark">
-              <thead>
-                <tr>
-                  <th style="background-color: #00A0F0; color: white; border: black;">ID</th>
-                  <th style="background-color: #00A0F0; color: white; border: black;">NOMBRE</th>
-                  <th style="background-color: #00A0F0; color: white; border: black;">TIPO</th>
-                  <th style="background-color: #00A0F0; color: white; border: black;">PRECIO COMPRA</th>
-                  <th style="background-color: #00A0F0; color: white; border: black;">APLICACIÓN</th>
-                  <th style="background-color: #00A0F0; color: white; border: black;">COMPUESTO</th>
-                  <th style="background-color: #00A0F0; color: white; border: black;">CONTENIDO</th>
-                </tr>
-              </thead>
-              <tbody id="cuerpoTabla">
-              </tbody>
-            </table>
-        </div>
-    </div>
-
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -496,13 +480,18 @@
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
 
-    <script src="js/conexionbd/ventas/ventas-añadir.js"></script>
+    <script src="js/conexionbd/ventas/ventas-visualizar.js"></script>
 
-     <!-- Required for table functionality -->
+    <!-- Required for table functionality -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 </body>
 
