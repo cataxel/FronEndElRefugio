@@ -51,66 +51,211 @@ var buttonBuscar = document.querySelector('#buttonBuscar');
 buttonBuscar.addEventListener('click', ()=>{
     var valorBusqueda = inputBuscar.value.toLowerCase();
     if(valorBusqueda != ""){
-        switch(valorBusqueda){
-            case 'panel':
-                window.location='index.html'
-                break;
-            case 'compras':
-                window.location='compras.html'
-                break;
-            case 'ventas':
-                window.location='ventas.html'
-                break;
-            case 'medicamentos':
-                window.location='medicamentos.html'
-                break;
-            case 'proveedores':
-                window.location='proveedores.html'
-                break;
-            case 'laboratorios':
-                window.location='laboratorios.html'
-                break;
-            case 'lotes':
-                window.location='lotes.html'
-                break;
-            case 'empleados':
-                window.location='empleados.html'
-                break;
+        if(nombreUser=='Administrador'){
+            switch(valorBusqueda){
+                case 'panel':
+                    window.location='index.html'
+                    break;
+                case 'compras':
+                    window.location='compras.html'
+                    break;
+                case 'nueva compra':
+                    window.location='compras-añadir.html'
+                    break;
+                case 'compras-añadir':
+                    window.location='compras-añadir.html'
+                    break;
+                case 'ventas':
+                    window.location='ventas.html'
+                    break;
+                case 'nueva venta':
+                    window.location='ventas-añadir.html'
+                    break;
+                case 'ventas-añadir':
+                    window.location='ventas-añadir.html'
+                    break;
+                case 'medicamentos':
+                    window.location='medicamentos.html'
+                    break;
+                case 'nuevo medicamento':
+                        window.location='medicamentos-añadir.html'
+                        break;
+                case 'medicamentos-añadir':
+                        window.location='medicamentos-añadir.html'
+                        break;
+                case 'proveedores':
+                    window.location='proveedores.html'
+                    break;
+                case 'nuevo proveedor':
+                        window.location='proveedores-añadir.html'
+                        break;
+                case 'proveedores-añadir':
+                        window.location='proveedores-añadir.html'
+                        break;
+                case 'laboratorios':
+                    window.location='laboratorios.html'
+                    break;
+                case 'nuevo laboratorio':
+                        window.location='laboratorios-añadir.html'
+                        break;
+                case 'laboratorios-añadir':
+                        window.location='laboratorios-añadir.html'
+                        break;
+                case 'lotes':
+                    window.location='lotes.html'
+                    break;
+                case 'empleados':
+                    window.location='empleados.html'
+                    break;
+                case 'nuevo empleado':
+                        window.location='empleados-añadir.html'
+                        break;
+                case 'empleados-añadir':
+                        window.location='empleados-añadir.html'
+                        break;
+                default:
+                    alert('Lo que estas buscando no existe o no puede ser accesado');
+            }
+        }else{
+            switch(valorBusqueda){
+                case 'panel':
+                    window.location='index.html'
+                    break;
+                case 'compras':
+                    window.location='compras.html'
+                    break;
+                case 'nueva compra':
+                    window.location='compras-añadir.html'
+                    break;
+                case 'compras-añadir':
+                    window.location='compras-añadir.html'
+                    break;
+                case 'ventas':
+                    window.location='ventas.html'
+                    break;
+                case 'nueva venta':
+                    window.location='ventas-añadir.html'
+                    break;
+                case 'ventas-añadir':
+                    window.location='ventas-añadir.html'
+                    break;
+                case 'medicamentos':
+                    window.location='medicamentos.html'
+                    break;
+                case 'lotes':
+                    window.location='lotes.html'
+                    break;
+                default:
+                    alert('Lo que estas buscando no existe o no puede ser accesado');
+            }
         }
+        
     }
 })
 
-
-inputBuscar.addEventListener('keydown', function(event){
-    if (event.keyCode === 13 || event.which === 13){
+    inputBuscar.addEventListener('keydown', e => {
+        if (event.keyCode === 13 || event.which === 13) {
+            e.preventDefault();
             var valorBusqueda = inputBuscar.value.toLowerCase();
-            if(valorBusqueda != ""){
-                switch(valorBusqueda){
-                    case 'panel':
-                        window.location='index.html'
-                        break;
-                    case 'compras':
-                        window.location='compras.html'
-                        break;
-                    case 'ventas':
-                        window.location='ventas.html'
-                        break;
-                    case 'medicamentos':
-                        window.location='medicamentos.html'
-                        break;
-                    case 'proveedores':
-                        window.location='proveedores.html'
-                        break;
-                    case 'laboratorios':
-                        window.location='laboratorios.html'
-                        break;
-                    case 'lotes':
-                        window.location='lotes.html'
-                        break;
-                    case 'empleados':
-                        window.location='empleados.html'
-                        break;
+            if (valorBusqueda != "") {
+                if(nombreUser=='Administrador'){
+                    switch(valorBusqueda){
+                        case 'panel':
+                            window.location='index.html'
+                            break;
+                        case 'compras':
+                            window.location='compras.html'
+                            break;
+                        case 'nueva compra':
+                            window.location='compras-añadir.html'
+                            break;
+                        case 'compras-añadir':
+                            window.location='compras-añadir.html'
+                            break;
+                        case 'ventas':
+                            window.location='ventas.html'
+                            break;
+                        case 'nueva venta':
+                            window.location='ventas-añadir.html'
+                            break;
+                        case 'ventas-añadir':
+                            window.location='ventas-añadir.html'
+                            break;
+                        case 'medicamentos':
+                            window.location='medicamentos.html'
+                            break;
+                        case 'nuevo medicamento':
+                                window.location='medicamentos-añadir.html'
+                                break;
+                        case 'medicamentos-añadir':
+                                window.location='medicamentos-añadir.html'
+                                break;
+                        case 'proveedores':
+                            window.location='proveedores.html'
+                            break;
+                        case 'nuevo proveedor':
+                                window.location='proveedores-añadir.html'
+                                break;
+                        case 'proveedores-añadir':
+                                window.location='proveedores-añadir.html'
+                                break;
+                        case 'laboratorios':
+                            window.location='laboratorios.html'
+                            break;
+                        case 'nuevo laboratorio':
+                                window.location='laboratorios-añadir.html'
+                                break;
+                        case 'laboratorios-añadir':
+                                window.location='laboratorios-añadir.html'
+                                break;
+                        case 'lotes':
+                            window.location='lotes.html'
+                            break;
+                        case 'empleados':
+                            window.location='empleados.html'
+                            break;
+                        case 'nuevo empleado':
+                                window.location='empleados-añadir.html'
+                                break;
+                        case 'empleados-añadir':
+                                window.location='empleados-añadir.html'
+                                break;
+                        default:
+                            alert('Lo que estas buscando no existe o no puede ser accesado');
+                    }
+                }else{
+                    switch(valorBusqueda){
+                        case 'panel':
+                            window.location='index.html'
+                            break;
+                        case 'compras':
+                            window.location='compras.html'
+                            break;
+                        case 'nueva compra':
+                            window.location='compras-añadir.html'
+                            break;
+                        case 'compras-añadir':
+                            window.location='compras-añadir.html'
+                            break;
+                        case 'ventas':
+                            window.location='ventas.html'
+                            break;
+                        case 'nueva venta':
+                            window.location='ventas-añadir.html'
+                            break;
+                        case 'ventas-añadir':
+                            window.location='ventas-añadir.html'
+                            break;
+                        case 'medicamentos':
+                            window.location='medicamentos.html'
+                            break;
+                        case 'lotes':
+                            window.location='lotes.html'
+                            break;
+                        default:
+                            alert('Lo que estas buscando no existe o no puede ser accesado');
+                    }
                 }
             }
-    }
-})
+        }
+    });
