@@ -62,28 +62,45 @@ form.addEventListener('submit', (event)=>{
     validarcampos();
     if(ban===true){
         form.addEventListener('submit', (event)=>{
-            const a = {
-                Iva: iva.value,
-                SubTotal: subtotal.value,
-                Fecha: fecha.value,
-                MetodoPago: metodo.value,
-                CantidadVendida: cant.value,
-                Lote: lote.value
-            };
-            console.log(JSON.stringify(a));
-            fetch('https://farmaexpress.azurewebsites.net/ventas/nueva', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                //body: jsonData,
-                body: JSON.stringify(a),
-            }).then(res => res.json())
-            .then(result=>console.log(result), vaciarCampos())
-            .catch(err => alert(err))
+            fetch('https://farmaexpress.azurewebsites.net/lotes/?id=${lote.value}')
+            .then(response1 => response1.json())
+            .then(data1 => {
+            var index;
+            for(index=0;index<data1.length;index++){
+                if(data1[index]._id===lote.value){
+                    break
+                }
+            }
+            var numExist = data1[index].ExistenciasFisica;
+            if(cant.value<=numExist){
+                const a = {
+                    Iva: iva.value,
+                    SubTotal: subtotal.value,
+                    Fecha: fecha.value,
+                    MetodoPago: metodo.value,
+                    CantidadVendida: cant.value,
+                    Lote: lote.value
+                };
+                console.log(JSON.stringify(a));
+                fetch('https://farmaexpress.azurewebsites.net/ventas/nueva', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    //body: jsonData,
+                    body: JSON.stringify(a),
+                }).then(res => res.json())
+                .then(result=>console.log(result), vaciarCampos(), showAlert('Confirmado'))
+                .catch(err => alert(err))
+            }else{
+                showAlert('Negado')
+            }
+            });
         })
     }
 })
+
+var table2 = $('#tableMed').DataTable();
 
 function vaciarCampos(){
     inicioTotal();
@@ -92,7 +109,9 @@ function vaciarCampos(){
     precio.value = '';
     caducidad.value = '';
     lote.value = '';
-    getMedicamentos();
+    //$('#tableMed').DataTable().destroy();
+    table2.ajax.reload();
+    //getMedicamentos();
 }
 
 function validarcampos()
@@ -131,3 +150,74 @@ function validarcampos()
     }
 }
 
+function showAlert(conf) {
+    if(conf=='Confirmado'){
+        // Create the alert element
+        // Remove existing alert, if any
+        var container = document.getElementById('alert-container');
+        while (container.firstChild) {
+            container.removeChild(container.firstChild);
+        }
+
+        var alertDiv = document.createElement('div');
+        alertDiv.classList.add('alert', 'alert-success', 'alert-dismissible');
+        alertDiv.setAttribute('role', 'alert');
+
+        // Add the close button
+        var closeButton = document.createElement('button');
+        closeButton.classList.add('close');
+        closeButton.setAttribute('type', 'button');
+        closeButton.setAttribute('data-dismiss', 'alert');
+        closeButton.setAttribute('aria-label', 'Close');
+
+        var closeIcon = document.createElement('span');
+        closeIcon.setAttribute('aria-hidden', 'true');
+        closeIcon.innerHTML = '&times;';
+
+        closeButton.appendChild(closeIcon);
+        alertDiv.appendChild(closeButton);
+
+        // Add the alert message
+        var message = document.createElement('span');
+        message.textContent = 'Empleado registrado con éxito';
+
+        alertDiv.appendChild(message);
+
+        // Add the alert to the document
+        container.appendChild(alertDiv);
+    }else{
+        // Create the alert element
+        // Remove existing alert, if any
+        var container = document.getElementById('alert-container');
+        while (container.firstChild) {
+            container.removeChild(container.firstChild);
+        }
+
+        var alertDiv = document.createElement('div');
+        alertDiv.classList.add('alert', 'alert-danger', 'alert-dismissible');
+        alertDiv.setAttribute('role', 'alert');
+
+        // Add the close button
+        var closeButton = document.createElement('button');
+        closeButton.classList.add('close');
+        closeButton.setAttribute('type', 'button');
+        closeButton.setAttribute('data-dismiss', 'alert');
+        closeButton.setAttribute('aria-label', 'Close');
+
+        var closeIcon = document.createElement('span');
+        closeIcon.setAttribute('aria-hidden', 'true');
+        closeIcon.innerHTML = '&times;';
+
+        closeButton.appendChild(closeIcon);
+        alertDiv.appendChild(closeButton);
+
+        // Add the alert message
+        var message = document.createElement('span');
+        message.textContent = 'No puedes vender mas de lo que ofrece el lote';
+
+        alertDiv.appendChild(message);
+
+        // Add the alert to the document
+        container.appendChild(alertDiv);
+    }
+}

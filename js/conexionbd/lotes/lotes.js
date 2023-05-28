@@ -17,6 +17,17 @@ $(document).ready(function() {
           },
           { data: 'FechaCaducidad',
             "defaultContent": "No definido",
+            render: 
+              function (type) {
+                var isoDate = type;
+                var date = new Date(isoDate);
+                var year = date.getUTCFullYear();
+                var month = String(date.getUTCMonth() + 1).padStart(2, '0');
+                var day = String(date.getUTCDate()).padStart(2, '0');
+                console.log(day);
+                var formattedDate = day + '-' + month + '-' + year;
+                return formattedDate
+            }
           },
           { data: 'Estatus',
             render: function(type, row) {

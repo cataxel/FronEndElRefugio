@@ -34,9 +34,9 @@ if(nombreUser!='Administrador'){
     sepproveedores.classList.add('d-none');
     sepproveedores.classList.remove('d-md-block');
 
-    menulotes.classList.add('d-none');
-    seplotes.classList.add('d-none');
-    seplotes.classList.remove('d-md-block');
+    menulaboratorios.classList.add('d-none');
+    seplaboratorios.classList.add('d-none');
+    seplaboratorios.classList.remove('d-md-block');
 
     menuempleados.classList.add('d-none');
     sepempleados.classList.add('d-none');
@@ -44,3 +44,73 @@ if(nombreUser!='Administrador'){
 }
 
 
+var inputBuscar = document.querySelector('#inputBuscar');
+var inputBuscar2 = document.querySelector('#inputBuscar input');
+var buttonBuscar = document.querySelector('#buttonBuscar');
+
+buttonBuscar.addEventListener('click', ()=>{
+    var valorBusqueda = inputBuscar.value.toLowerCase();
+    if(valorBusqueda != ""){
+        switch(valorBusqueda){
+            case 'panel':
+                window.location='index.html'
+                break;
+            case 'compras':
+                window.location='compras.html'
+                break;
+            case 'ventas':
+                window.location='ventas.html'
+                break;
+            case 'medicamentos':
+                window.location='medicamentos.html'
+                break;
+            case 'proveedores':
+                window.location='proveedores.html'
+                break;
+            case 'laboratorios':
+                window.location='laboratorios.html'
+                break;
+            case 'lotes':
+                window.location='lotes.html'
+                break;
+            case 'empleados':
+                window.location='empleados.html'
+                break;
+        }
+    }
+})
+
+
+inputBuscar.addEventListener('keydown', function(event){
+    if (event.keyCode === 13 || event.which === 13){
+            var valorBusqueda = inputBuscar.value.toLowerCase();
+            if(valorBusqueda != ""){
+                switch(valorBusqueda){
+                    case 'panel':
+                        window.location='index.html'
+                        break;
+                    case 'compras':
+                        window.location='compras.html'
+                        break;
+                    case 'ventas':
+                        window.location='ventas.html'
+                        break;
+                    case 'medicamentos':
+                        window.location='medicamentos.html'
+                        break;
+                    case 'proveedores':
+                        window.location='proveedores.html'
+                        break;
+                    case 'laboratorios':
+                        window.location='laboratorios.html'
+                        break;
+                    case 'lotes':
+                        window.location='lotes.html'
+                        break;
+                    case 'empleados':
+                        window.location='empleados.html'
+                        break;
+                }
+            }
+    }
+})

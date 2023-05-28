@@ -56,7 +56,7 @@ $(document).ready(function() {
          },
       });
   
-      var tablaDatos = $('#tableMed').DataTable();
+    var tablaDatos = $('#tableMed').DataTable();
     
     // Agrega un escucha de evento para hacer algo cuando se seleccione una fila
     $('#tableMed tbody').on('click', 'tr', function() {
