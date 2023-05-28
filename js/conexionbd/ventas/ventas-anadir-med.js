@@ -80,11 +80,7 @@ $(document).ready(function() {
         if(filaSeleccionada === null){
           alert('Debes seleccionar un elemento de la tabla primero para continuar con la operación');
         }else{
-          $(document).ready(function() {
-            $('#buscarMedContinuar').click(function() {
-              $('#buscarMedModal').modal('hide');
-            });
-          });
+          $('#buscarMedModal').modal('hide');
           lote.value = filaSeleccionada._id;
           med.value = filaSeleccionada.Medicamento;
           console.log(filaSeleccionada.FechaCaducidad);

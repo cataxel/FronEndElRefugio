@@ -66,11 +66,7 @@ $(document).ready(function() {
         if(filaSeleccionada === null){
           alert('Debes seleccionar un elemento de la tabla primero para continuar con la operación');
         }else{
-          $(document).ready(function() {
-            $('#buscarProvContinuar').click(function() {
-              $('#buscarProvModal').modal('hide');
-            });
-          });
+          $('#buscarProvModal').modal('hide');
           idprov.value = filaSeleccionada._id;
           prov.value = filaSeleccionada.nombreProveedores;
         }
