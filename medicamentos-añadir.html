@@ -92,10 +92,10 @@
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar"
+                            <input type="text" id="inputBuscar" class="form-control bg-light border-0 small" placeholder="Buscar"
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button" style="background-color:  #00A0F0;">
+                                <button class="btn btn-primary" id="buttonBuscar" type="button" style="background-color:  #00A0F0;">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -115,7 +115,7 @@
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                         aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="usuario-empleado.html" id="nomUsuario">
                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             Perfil
                         </a>
@@ -154,7 +154,7 @@
                 <hr class="sidebar-divider d-md-block">
 
                     <!-- Nav Item - Panel -->
-                    <li class="nav-item" style="background-color: white;" id="menu-opcion">
+                    <li class="nav-item menu-panel" style="background-color: white;" id="menu-opcion">
                         <a class="nav-link enlace" id="menu-op" href="index.html">
                             <div class="icono" id="logo-menu">
                                 <img class="fas fa-fw fa-table fa-tachometer-alt img-logo-menu" src="img/panel.jpeg">
@@ -168,10 +168,10 @@
                     </li>
 
                     <!-- Divider -->
-                    <hr class="sidebar-divider d-md-block">
+                    <hr class="sidebar-divider d-md-block menu-panel-sep">
 
                     <!-- Nav Item - Compras -->
-                    <li class="nav-item" style="background-color: white;" id="menu-opcion">
+                    <li class="nav-item menu-compras" style="background-color: white;" id="menu-opcion">
                         <a class="nav-link enlace" id="menu-op" href="compras.html">
                             <div class="" id="logo-menu">
                                 <img class="fas fa-fw img-logo-menu" src="img/Compras.jpeg">
@@ -185,10 +185,10 @@
                     </li>
 
                     <!-- Divider -->
-                    <hr class="sidebar-divider d-md-block">
+                    <hr class="sidebar-divider d-md-block menu-compras-sep">
 
                     <!-- Nav Item - Ventas -->
-                    <li class="nav-item" style="background-color: white;" id="menu-opcion">
+                    <li class="nav-item menu-ventas" style="background-color: white;" id="menu-opcion">
                         <a class="nav-link enlace" id="menu-op" href="ventas.html">
                             <div class="" id="logo-menu">
                                 <img class="fas fa-fw img-logo-menu" src="img/ventas.jpeg">
@@ -202,10 +202,10 @@
                     </li>
 
                     <!-- Divider -->
-                    <hr class="sidebar-divider d-md-block">
+                    <hr class="sidebar-divider d-md-block menu-ventas-sep">
 
                     <!-- Nav Item - Medicamentos -->
-                    <li class="nav-item active" style="background-color: white;" id="menu-opcion">
+                    <li class="nav-item active menu-medicamentos" style="background-color: white;" id="menu-opcion">
                         <a class="nav-link enlace" id="menu-op" href="medicamentos.html">
                             <div class="" id="logo-menu">
                                 <img class="fas fa-fw img-logo-menu" src="img/medicamentos.jpeg">
@@ -219,10 +219,10 @@
                     </li>
 
                     <!-- Divider -->
-                    <hr class="sidebar-divider d-md-block">
+                    <hr class="sidebar-divider d-md-block menu-medicamentos-sep">
 
                     <!-- Nav Item - Proveedores -->
-                    <li class="nav-item" style="background-color: white;" id="menu-opcion">
+                    <li class="nav-item menu-proveedores" style="background-color: white;" id="menu-opcion">
                         <a class="nav-link enlace" id="menu-op" href="proveedores.html">
                             <div class="" id="logo-menu">
                                 <img class="fas fa-fw img-logo-menu" src="img/proveedores.jpeg">
@@ -236,10 +236,10 @@
                     </li>
 
                     <!-- Divider -->
-                    <hr class="sidebar-divider d-md-block">
+                    <hr class="sidebar-divider d-md-block menu-proveedores-sep">
 
                     <!-- Nav Item - Laboratorios -->
-                    <li class="nav-item" style="background-color: white;" id="menu-opcion">
+                    <li class="nav-item menu-laboratorios" style="background-color: white;" id="menu-opcion">
                         <a class="nav-link enlace" id="menu-op" href="laboratorios.html">
                             <div class="" id="logo-menu">
                                 <img class="fas fa-fw img-logo-menu" src="img/laboratorios.jpeg">
@@ -253,10 +253,10 @@
                     </li>
 
                     <!-- Divider -->
-                    <hr class="sidebar-divider d-md-block">
+                    <hr class="sidebar-divider d-md-block menu-laboratorios-sep">
 
                     <!-- Nav Item - Lotes -->
-                    <li class="nav-item" style="background-color: white;" id="menu-opcion">
+                    <li class="nav-item menu-lotes" style="background-color: white;" id="menu-opcion">
                         <a class="nav-link enlace" id="menu-op" href="lotes.html">
                             <div class="" id="logo-menu">
                                 <img class="fas fa-fw img-logo-menu" src="img/lotes.jpeg">
@@ -270,10 +270,10 @@
                     </li>
 
                     <!-- Divider -->
-                    <hr class="sidebar-divider d-md-block">
+                    <hr class="sidebar-divider d-md-block menu-lotes-sep">
 
                     <!-- Nav Item - Empleados -->
-                    <li class="nav-item" style="background-color: white;" id="menu-opcion">
+                    <li class="nav-item menu-empleados" style="background-color: white;" id="menu-opcion">
                         <a class="nav-link enlace" id="menu-op" href="empleados.html">
                             <div class="" id="logo-menu">
                                 <img class="fas fa-fw img-logo-menu" src="img/empleados.jpeg">
@@ -287,7 +287,7 @@
                     </li>
 
                     <!-- Divider -->
-                    <hr class="sidebar-divider d-md-block">
+                    <hr class="sidebar-divider d-md-block menu-empleados-sep">
 
                 </ul>
                 <!-- End of Sidebar -->
@@ -476,7 +476,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Cerrar sesión</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true"></span>
                     </button>
                 </div>
                 <div class="modal-body">Estas seguro de que quieres acabr con la sesión actual.</div>
@@ -497,8 +497,8 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-    <script src="js/tablas.js"></script>
     <script src="js/conexionbd/medicamentos/medicamentos-nuevo.js"></script>
+    <script src="js/usuarios.js"></script>
 
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>

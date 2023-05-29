@@ -69,15 +69,12 @@ $(document).ready(function() {
     });
   
       var mod = document.querySelector('#buscarMedContinuar');
+      let buscarMedContinuar = document.getElementById('buscarMedModal');
       mod.addEventListener('click', ()=>{
         if(filaSeleccionada === null){
           alert('Debes seleccionar un elemento de la tabla primero para continuar con la operación');
         }else{
-          $(document).ready(function() {
-            $('#buscarMedContinuar').click(function() {
-              $('#buscarMedModal').modal('hide');
-            });
-          });
+          $('#buscarMedModal').modal('hide');
           idmed.value = filaSeleccionada._id;
           med.value = filaSeleccionada.nombreMedicamento;
           precio.value = filaSeleccionada.PrecioCompra;
@@ -103,6 +100,4 @@ $(document).ready(function() {
         });
       });
     }
-
-    let buscarMedContinuar = document.getElementById('buscarMedModal');
 

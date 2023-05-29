@@ -62,30 +62,77 @@ form.addEventListener('submit', (event)=>{
     validarcampos();
     if(ban===true){
         form.addEventListener('submit', (event)=>{
-            const a = {
-                Iva: iva.value,
-                SubTotal: subtotal.value,
-                Fecha: fecha.value,
-                MetodoPago: metodo.value,
-                CantidadVendida: cant.value,
-                Lote: lote.value
-            };
-            console.log(JSON.stringify(a));
-            fetch('https://farmaexpress.azurewebsites.net/ventas/nueva', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                //body: jsonData,
-                body: JSON.stringify(a),
-            }).then(res => res.json())
-            .then(result=>console.log(result), vaciarCampos())
-            .catch(err => alert(err))
+            fetch('https://farmaexpress.azurewebsites.net/lotes/?id=${lote.value}')
+            .then(response1 => response1.json())
+            .then(data1 => {
+            var index;
+            for(index=0;index<data1.length;index++){
+                if(data1[index]._id===lote.value){
+                    break
+                }
+            }
+            var numExist = data1[index].ExistenciasFisica;
+            if(cant.value<=numExist){
+                const a = {
+                    Iva: iva.value,
+                    SubTotal: subtotal.value,
+                    Fecha: fecha.value,
+                    MetodoPago: metodo.value,
+                    CantidadVendida: cant.value,
+                    Lote: lote.value
+                };
+                console.log(JSON.stringify(a));
+                fetch('https://farmaexpress.azurewebsites.net/ventas/nueva', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    //body: jsonData,
+                    body: JSON.stringify(a),
+                }).then(res => res.json())
+                .then(result=>console.log(result))
+                .catch(err => alert(err))
+
+                fetch('https://farmaexpress.azurewebsites.net/lotes/?id=${lote.value}')
+                .then(response1 => response1.json())
+                .then(datalote => {
+                var index;
+                for(index=0;index<datalote.length;index++){
+                    if(datalote[index]._id===lote.value){
+                        break
+                    }
+                }
+                    console.log(datalote[index].ExistenciasFisica)
+                    if((datalote[index].ExistenciasFisica)-(cant.value) == 0){
+                        const b = {
+                            Estatus: false,
+                        };
+                        console.log(JSON.stringify(a));
+                        fetch('https://farmaexpress.azurewebsites.net/lotes/actualizar/'+lote.value, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            //body: jsonData,
+                            body: JSON.stringify(b),
+                        }).then(res => res.json())
+                        .then(result=>window.location='ventas.html')
+                        .catch(err => alert(err))
+                    }else{
+                        window.location='ventas.html'
+                    }
+                });
+            }else{
+                showAlert('Negado')
+            }
+            });
         })
     }
 })
 
-function vaciarCampos(){
+
+function vaciarCampos() {
+    showAlert('Confirmado');
     inicioTotal();
     med.value = '';
     cant.value = '';
@@ -93,7 +140,7 @@ function vaciarCampos(){
     caducidad.value = '';
     lote.value = '';
     getMedicamentos();
-}
+  }
 
 function validarcampos()
 {
@@ -131,3 +178,74 @@ function validarcampos()
     }
 }
 
+function showAlert(conf) {
+    if(conf=='Confirmado'){
+        // Create the alert element
+        // Remove existing alert, if any
+        var container = document.getElementById('alert-container');
+        while (container.firstChild) {
+            container.removeChild(container.firstChild);
+        }
+
+        var alertDiv = document.createElement('div');
+        alertDiv.classList.add('alert', 'alert-success', 'alert-dismissible');
+        alertDiv.setAttribute('role', 'alert');
+
+        // Add the close button
+        var closeButton = document.createElement('button');
+        closeButton.classList.add('close');
+        closeButton.setAttribute('type', 'button');
+        closeButton.setAttribute('data-dismiss', 'alert');
+        closeButton.setAttribute('aria-label', 'Close');
+
+        var closeIcon = document.createElement('span');
+        closeIcon.setAttribute('aria-hidden', 'true');
+        closeIcon.innerHTML = '&times;';
+
+        closeButton.appendChild(closeIcon);
+        alertDiv.appendChild(closeButton);
+
+        // Add the alert message
+        var message = document.createElement('span');
+        message.textContent = 'Venta realizada';
+
+        alertDiv.appendChild(message);
+
+        // Add the alert to the document
+        container.appendChild(alertDiv);
+    }else{
+        // Create the alert element
+        // Remove existing alert, if any
+        var container = document.getElementById('alert-container');
+        while (container.firstChild) {
+            container.removeChild(container.firstChild);
+        }
+
+        var alertDiv = document.createElement('div');
+        alertDiv.classList.add('alert', 'alert-danger', 'alert-dismissible');
+        alertDiv.setAttribute('role', 'alert');
+
+        // Add the close button
+        var closeButton = document.createElement('button');
+        closeButton.classList.add('close');
+        closeButton.setAttribute('type', 'button');
+        closeButton.setAttribute('data-dismiss', 'alert');
+        closeButton.setAttribute('aria-label', 'Close');
+
+        var closeIcon = document.createElement('span');
+        closeIcon.setAttribute('aria-hidden', 'true');
+        closeIcon.innerHTML = '&times;';
+
+        closeButton.appendChild(closeIcon);
+        alertDiv.appendChild(closeButton);
+
+        // Add the alert message
+        var message = document.createElement('span');
+        message.textContent = 'No puedes vender mas de lo que ofrece el lote';
+
+        alertDiv.appendChild(message);
+
+        // Add the alert to the document
+        container.appendChild(alertDiv);
+    }
+}
