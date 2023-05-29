@@ -3,6 +3,10 @@ $(document).ready(function() {
     var filaSeleccionada = null;
     
       $('#tableMed').DataTable({
+        ajax: {
+          url: 'https://farmaexpress.azurewebsites.net/lotes/',
+          dataType: 'json',
+        },
         select: {
           info : false
         },
@@ -57,6 +61,8 @@ $(document).ready(function() {
       });
   
     var tablaDatos = $('#tableMed').DataTable();
+    let row = tablaDatos.row('#'+'646c05c8c5449e5ecccfd76d');
+    console.log(row)
     
     // Agrega un escucha de evento para hacer algo cuando se seleccione una fila
     $('#tableMed tbody').on('click', 'tr', function() {
@@ -108,7 +114,8 @@ $(document).ready(function() {
         }
       })
     });
-  
+
+
     window.addEventListener('DOMContentLoaded', () => {
       getMedicamentos();
     })
@@ -124,7 +131,9 @@ $(document).ready(function() {
         var filasSeleccionadas = tabla.rows('.selected').data();
         console.log(data);
         data.forEach(item => {
-          tabla.row.add(item).draw();
+          if(item.Estatus == true){
+            tabla.row.add(item).draw();
+          }
         });
       });
     }

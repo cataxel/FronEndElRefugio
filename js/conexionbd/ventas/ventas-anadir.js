@@ -90,8 +90,38 @@ form.addEventListener('submit', (event)=>{
                     //body: jsonData,
                     body: JSON.stringify(a),
                 }).then(res => res.json())
-                .then(result=>console.log(result), vaciarCampos(), showAlert('Confirmado'))
+                .then(result=>console.log(result))
                 .catch(err => alert(err))
+
+                fetch('https://farmaexpress.azurewebsites.net/lotes/?id=${lote.value}')
+                .then(response1 => response1.json())
+                .then(datalote => {
+                var index;
+                for(index=0;index<datalote.length;index++){
+                    if(datalote[index]._id===lote.value){
+                        break
+                    }
+                }
+                    console.log(datalote[index].ExistenciasFisica)
+                    if((datalote[index].ExistenciasFisica)-(cant.value) == 0){
+                        const b = {
+                            Estatus: false,
+                        };
+                        console.log(JSON.stringify(a));
+                        fetch('https://farmaexpress.azurewebsites.net/lotes/actualizar/'+lote.value, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            //body: jsonData,
+                            body: JSON.stringify(b),
+                        }).then(res => res.json())
+                        .then(result=>window.location='ventas.html')
+                        .catch(err => alert(err))
+                    }else{
+                        window.location='ventas.html'
+                    }
+                });
             }else{
                 showAlert('Negado')
             }
@@ -100,19 +130,17 @@ form.addEventListener('submit', (event)=>{
     }
 })
 
-var table2 = $('#tableMed').DataTable();
 
-function vaciarCampos(){
+function vaciarCampos() {
+    showAlert('Confirmado');
     inicioTotal();
     med.value = '';
     cant.value = '';
     precio.value = '';
     caducidad.value = '';
     lote.value = '';
-    //$('#tableMed').DataTable().destroy();
-    table2.ajax.reload();
-    //getMedicamentos();
-}
+    getMedicamentos();
+  }
 
 function validarcampos()
 {
@@ -179,7 +207,7 @@ function showAlert(conf) {
 
         // Add the alert message
         var message = document.createElement('span');
-        message.textContent = 'Empleado registrado con éxito';
+        message.textContent = 'Venta realizada';
 
         alertDiv.appendChild(message);
 

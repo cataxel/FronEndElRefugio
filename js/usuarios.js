@@ -23,26 +23,31 @@ let sepempleados = document.querySelector('.menu-empleados-sep')
 console.log(sepproveedores)
 let nombreUser = JSON.parse(sessionStorage.getItem("nombre"))
 
-if(nombreUser==null){
-    user.innerHTML = '<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Perfil'
-}else{
-    user.innerHTML = '<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>'+nombreUser
+function carga(){
+    if(nombreUser==null){
+        //user.innerHTML = '<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Perfil'
+        var nombreUsuario = ['Administrador']
+        sessionStorage.setItem('nombre', JSON.stringify(nombreUsuario));
+        user.innerHTML = '<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>'+nombreUser
+    }else{
+        user.innerHTML = '<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>'+nombreUser
+    }
+    
+    if(nombreUser!='Administrador'){
+        menuproveedores.classList.add('d-none');
+        sepproveedores.classList.add('d-none');
+        sepproveedores.classList.remove('d-md-block');
+    
+        menulaboratorios.classList.add('d-none');
+        seplaboratorios.classList.add('d-none');
+        seplaboratorios.classList.remove('d-md-block');
+    
+        menuempleados.classList.add('d-none');
+        sepempleados.classList.add('d-none');
+        sepempleados.classList.remove('d-md-block');
+    }
 }
-
-if(nombreUser!='Administrador'){
-    menuproveedores.classList.add('d-none');
-    sepproveedores.classList.add('d-none');
-    sepproveedores.classList.remove('d-md-block');
-
-    menulaboratorios.classList.add('d-none');
-    seplaboratorios.classList.add('d-none');
-    seplaboratorios.classList.remove('d-md-block');
-
-    menuempleados.classList.add('d-none');
-    sepempleados.classList.add('d-none');
-    sepempleados.classList.remove('d-md-block');
-}
-
+ carga();
 
 var inputBuscar = document.querySelector('#inputBuscar');
 var inputBuscar2 = document.querySelector('#inputBuscar input');

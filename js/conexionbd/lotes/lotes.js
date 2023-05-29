@@ -24,7 +24,6 @@ $(document).ready(function() {
                 var year = date.getUTCFullYear();
                 var month = String(date.getUTCMonth() + 1).padStart(2, '0');
                 var day = String(date.getUTCDate()).padStart(2, '0');
-                console.log(day);
                 var formattedDate = day + '-' + month + '-' + year;
                 return formattedDate
             }
@@ -107,7 +106,9 @@ $(document).ready(function() {
         var filasSeleccionadas = tabla.rows('.selected').data();
         console.log(data[1]);
         data.forEach(item => {
-          tabla.row.add(item).draw();
+          if(item.Estatus == true){
+            tabla.row.add(item).draw();
+          }
         });
       });
     }
