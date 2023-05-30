@@ -11,6 +11,7 @@ let comp = document.querySelector('#form-control-comp');
 let contenido = document.querySelector('#form-control-contenido');
 let clasif = document.querySelector('#btn-toggle-clasif');
 let rec = document.querySelector('#btn-toggle-rec');
+var select = document.getElementById('form-control-laboratorio');
 
 var ban = false;
 
@@ -63,6 +64,10 @@ window.addEventListener('DOMContentLoaded', () => {
       if(!(data1[index].Contenido===undefined)){
         contenido.value = data1[index].Contenido;
       }
+      var option = document.createElement('option');
+      option.value = data1[index].Laboratorio;
+      option.text = data1[index].Laboratorio;
+      select.appendChild(option);
       var toggleButtonRec = $('#btn-toggle-rec');
       var toggleButtonCls = $('#btn-toggle-clasif');
       if(data1[index].RecetaNecesaria===true){

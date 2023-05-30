@@ -12,6 +12,7 @@ let comp = document.querySelector('#form-control-comp');
 let contenido = document.querySelector('#form-control-contenido');
 let clasif = document.querySelector('#btn-toggle-clasif');
 let rec = document.querySelector('#btn-toggle-rec');
+var select = document.getElementById('form-control-laboratorio');
 
 var ban = false;
 
@@ -64,6 +65,27 @@ window.addEventListener('DOMContentLoaded', () => {
       if(!(data1[index].Contenido===undefined)){
         contenido.value = data1[index].Contenido;
       }
+      if(!(data1[index].Laboratorio===undefined)){
+        contenido.value = data1[index].Contenido;
+      }
+        var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://farmaexpress.azurewebsites.net/laboratorios/', true);
+            xhr.onload = function() {
+            if (xhr.status === 200) {
+                var data = JSON.parse(xhr.responseText);
+                for (var i = 0; i < data.length; i++) {
+                    var option = document.createElement('option');
+                    option.value = data[i].Nombre;
+                    option.text = data[i].Nombre;
+                    select.appendChild(option);
+                    if(data1[index].Laboratorio===select.options[i].value){
+                        select.options[i].selected = true;
+                    }
+                }
+            }
+            };
+            xhr.send();
+       select.value =  data1[index].Laboratorio;
       var toggleButtonRec = $('#btn-toggle-rec');
       var toggleButtonCls = $('#btn-toggle-clasif');
       if(data1[index].RecetaNecesaria===true){
@@ -108,6 +130,7 @@ form.addEventListener('submit', (event)=>{
             Compuesto: comp.value,
             Contenido: contenido.value,
             PatenteOGenerico: clfinal,
+            Laboratorio: select.value
         };
         console.log(JSON.stringify(a));
         fetch('https://farmaexpress.azurewebsites.net/medicamentos/actualizar/'+idActual, {

@@ -73,6 +73,10 @@
     z-index: 100;
 }
 
+.SOLO-INDEX{
+    overflow-x: auto;
+}
+
 .sidebar .nav-item .nav-link {
     font-weight: 700;
 }

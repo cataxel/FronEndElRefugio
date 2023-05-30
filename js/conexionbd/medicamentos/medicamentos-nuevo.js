@@ -11,8 +11,30 @@ let comp = document.querySelector('#form-control-comp');
 let contenido = document.querySelector('#form-control-contenido');
 let clasif = document.querySelector('#btn-toggle-clasif');
 let rec = document.querySelector('#btn-toggle-rec');
+var select = document.getElementById('form-control-laboratorio');
 
 var ban = false;
+
+// Realizar solicitud GET al archivo JSON
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'https://farmaexpress.azurewebsites.net/laboratorios/', true);
+xhr.onload = function() {
+  if (xhr.status === 200) {
+    var data = JSON.parse(xhr.responseText);
+    fillSelect(data);
+  }
+};
+xhr.send();
+
+// Llenar el select con las opciones del JSON
+function fillSelect(data) {
+  for (var i = 0; i < data.length; i++) {
+    var option = document.createElement('option');
+    option.value = data[i].Nombre;
+    option.text = data[i].Nombre;
+    select.appendChild(option);
+  }
+}
 
 ganancia.addEventListener('input', () => {
     prventa.value = parseFloat(prcompra.value) + (parseFloat(prcompra.value) * (parseFloat(ganancia.value) / 100));
@@ -47,7 +69,7 @@ form.addEventListener('submit', (event)=>{
             Compuesto: comp.value,
             Contenido: contenido.value,
             PatenteOGenerico: clfinal,
-
+            Laboratorio: select.value
         };
         console.log(JSON.stringify(a));
         fetch('https://farmaexpress.azurewebsites.net/medicamentos/nuevo', {

@@ -32,6 +32,9 @@ $(document).ready(function() {
                 return formatoDinero
             }
           },
+          { data: 'Proveedores',
+            "defaultContent": "No definido"
+          },
         ],
         language: {
           "lengthMenu": "Mostrando _MENU_ registros por página",

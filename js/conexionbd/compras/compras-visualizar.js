@@ -3,6 +3,8 @@ const form = document.getElementById('formulario');
 let idemp = document.getElementById('id-emp');
 let fecha = document.getElementById('form-control-fecha');
 let totale = document.getElementById('form-control-totale');
+let prov = document.getElementById('form-control-prov');
+
 
 var urlActual = window.location.href;
 var idActual = urlActual.substring(urlActual.indexOf('=')+1, urlActual.length)
@@ -33,6 +35,7 @@ window.addEventListener('DOMContentLoaded', () => {
       var formattedDate = year + '-' + month + '-' + day;
       fecha.value = formattedDate;
       totale.value = data1[index].TotalCompra;
+      prov.value = data1[index].Proveedores;
     });
   }
 

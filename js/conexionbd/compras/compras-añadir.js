@@ -54,10 +54,10 @@ function asignarEmpleado(){
 
 form.addEventListener('submit', (event)=>{
     event.preventDefault();
-    //if(prov.value.trim()===''){
-        //alert('Debes ingresar el proveedor');
-    //}else if($('#example').DataTable().rows().count() > 0){
-        if($('#example').DataTable().rows().count() > 0){
+    if(prov.value.trim()===''){
+        alert('Debes ingresar el proveedor');
+    }else if($('#example').DataTable().rows().count() > 0){
+        //if($('#example').DataTable().rows().count() > 0){
         form.addEventListener('submit', (event)=>{
             event.preventDefault();
             var tabla = document.getElementById('example'); // Obtener la referencia a la tabla por su ID
@@ -94,6 +94,7 @@ form.addEventListener('submit', (event)=>{
                                 FechaCompra: fecha.value,
                                 TotalCompra: totale.value,
                                 Lotes: arrayLotes,
+                                Proveedores: prov.value
                             };
                             console.log(JSON.stringify(a));
                             fetch('https://farmaexpress.azurewebsites.net/compras/nueva', {

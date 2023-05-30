@@ -59,6 +59,9 @@ $(document).ready(function() {
                 return type;
             }
           },
+          { data: 'Laboratorio',
+            "defaultContent": "No definido"
+          },
         ],
         language: {
           "lengthMenu": "Mostrando _MENU_ registros por página",

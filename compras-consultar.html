@@ -316,37 +316,56 @@
                     <!-- Formulario -->
                     <div class="row d-block">
                             <form class="user w-100 d-block justify-content-center align-items-center">
-                                <div class="form-group ml-2 mr-2 d-none justify-content-around align-items-center;">
-                                    <!--<div class="form-group ml-2 mr-2 d-flex justify-content-around align-items-center;"></div>-->
-                                    <div class="d-block align-items-center campos-cuadro">
+                                <div class="form-group ml-2 mr-2 d-flex justify-content-around align-items-center">
+                                    <div class="d-none align-items-center campos-cuadro">
+                                    <!--<div class="d-block align-items-center campos-cuadro">-->
                                         <div class="row filas-form filas">
-                                            <label for="colFormLabel" style="color: black;" class="col-sm-2 col-form-label d-flex justify-content-center textoIndicativo">Fecha</label>
+                                            <label for="form-control-fecha" style="color: black;" class="col-sm-2 col-form-label d-flex justify-content-center textoIndicativo">Fecha</label>
                                             <div class="col-sm-8">
-                                              <input type="date" class="form-control " id="form-control-fecha" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="row filas-form filas">
-                                            <label for="colFormLabel" style="color: black;" class="col-sm-2 col-form-label d-flex justify-content-center textoIndicativo">Total</label>
-                                            <div class="col-sm-8">
-                                              <input type="text" class="form-control cdTexto" id="form-control-nombre" disabled >
+                                              <input type="date" class="form-control " id="form-control-fecha">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="d-block align-items-center campos-cuadro">
-                                        <div class="row filas-form filas  d-flex justify-content-center align-items-center">
-                                            <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Empleado</label>
-                                            <div class="col-sm-8">
-                                              <input type="text" class="form-control cdTexto" id="form-control-nombre" disabled>
+                                    <!--<div class="d-none align-items-center campos-cuadro">-->
+                                    <div class="d-block align-items-center campos-cuadro col-sm-10">
+                                        <!--<div class="row filas-form filas  d-flex justify-content-center align-items-center">-->
+                                        <div class="row filas-form filas  d-none justify-content-center align-items-center">
+                                            <label for="form-control-empleado" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Empleado</label>
+                                            <div class="col-sm-6">
+                                              <input type="text" class="form-control cdTexto" id="form-control-empleado" disabled>
                                             </div>
+                                            <button type="submit" class="card h-100 w-auto btn-mdt" style="background-color: #00A0F0;" 
+                                            id="buscarEmpleado">
+                                                <div class="d-flex align-items-center justify-content-center">
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col">
+                                                             <p class="h5 mb-0" style="color: white;">Buscar</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </button>
                                         </div>
-                                        <div class="row filas-form filas">
-                                            <label for="colFormLabel" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Proveedor</label>
+                                        
+                                        <div class="row filas-form filas d-flex justify-content-center align-items-center">
+                                            <label for="form-control-prov" style="color: black;" class="col-sm-2 mr-1 col-form-label d-flex justify-content-center textoIndicativo">Proveedor</label>
                                             <div class="col-sm-8">
-                                              <input type="text" class="form-control cdTexto" id="form-control-nombre" disabled>
+                                              <input type="text" class="form-control cdTexto" id="form-control-prov" disabled>
+                                              <input type="text" class="form-control d-none" id="form-control-idprov">
                                             </div>
+                                            <button type="button" class="card h-100 w-auto btn-mdt d-none" style="background-color: #00A0F0;" 
+                                            id="buscarProv">
+                                                <div class="d-flex align-items-center justify-content-center">
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col">
+                                                             <p class="h5 mb-0" style="color: white;">Buscar</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
+
 
                                 <div class="form-group ml-3 mr-3">
                                     <div class="table-responsive">
